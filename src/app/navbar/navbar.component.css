@@ -1,3 +1,9 @@
+*,
+:after,
+:before {
+  box-sizing: border-box;
+}
+
 .navbar-left {
   position: fixed;
   top: 0;
@@ -45,6 +51,10 @@ ul {
   opacity: 1;
 }
 
+.navbar-left .main-menu a.active:after {
+  width: 65px;
+}
+
 .navbar-left .main-menu a {
   padding: 10px 30px;
   position: relative;
@@ -55,6 +65,23 @@ ul {
   color: #fff;
   opacity: 0.85;
 }
+.navbar-left .main-menu a:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    270.16deg,
+    var(--px-theme) 33.61%,
+    rgba(175, 38, 118, 0) 92.05%
+  );
+  transition: ease all 0.35s;
+}
+
 a {
   text-decoration: none;
 }
@@ -115,4 +142,83 @@ a {
   font-variant: normal;
   line-height: 1;
   text-rendering: auto;
+}
+.toggler-menu {
+  background-color: var(--px-bg);
+  color: var(--px-heading);
+  border: 1px solid var(--px-gray) !important;
+  border-radius: var(--px-rounded);
+  padding: 10px 25px;
+  line-height: 1;
+  position: relative;
+  margin-left: 0;
+  width: 50px;
+  height: 30px;
+}
+
+.toggler-menu span {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 17px;
+  box-shadow: 0 0 0 1px currentColor, 0 -7px 0 1px currentColor,
+    0 7px 0 1px currentColor;
+  height: 0;
+  z-index: 1;
+}
+
+.mob-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 20px;
+  z-index: 111;
+  transition: all 0s ease;
+}
+
+.fixed-header .mob-header {
+  background: var(--px-dark);
+  transition: all 0s ease;
+}
+
+@media (min-width: 1201px) {
+  .mob-header {
+    display: none;
+  }
+}
+
+.navbar-brand {
+  padding-top: var(--bs-navbar-brand-padding-y);
+  padding-bottom: var(--bs-navbar-brand-padding-y);
+  margin-right: var(--bs-navbar-brand-margin-end);
+  font-size: var(--bs-navbar-brand-font-size);
+  color: var(--bs-navbar-brand-color);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.logo-dark {
+  display: block;
+}
+img {
+  max-width: 100%;
+}
+
+img,
+svg {
+  vertical-align: middle;
+}
+.logo-light {
+  display: none;
+}
+img {
+  max-width: 100%;
+}
+
+img,
+svg {
+  vertical-align: middle;
 }

@@ -2,32 +2,6 @@
   outline: none !important;
 }
 
-body {
-  background-color: #100e24;
-  color: var(--px-text);
-  font-family: IBM Plex Sans, sans-serif;
-  --bs-body-font-weight: 400;
-  --bs-body-font-size: 1rem;
-  --bs-body-line-height: 1.6;
-  overflow-x: hidden;
-}
-
-.container,
-.container-fluid,
-.container-lg,
-.container-md,
-.container-sm,
-.container-xl,
-.container-xxl {
-  --bs-gutter-x: 1.5rem;
-  --bs-gutter-y: 0;
-  width: 100%;
-  padding-right: calc(var(--bs-gutter-x) * 0.5);
-  padding-left: calc(var(--bs-gutter-x) * 0.5);
-  margin-right: auto;
-  margin-left: auto;
-}
-
 h1 {
   margin-top: 0;
   margin-bottom: 0.5rem;
@@ -118,5 +92,111 @@ a {
   font-size: 18px;
 }
 .info-bar p span {
+  padding-left: 8px;
+}
+
+.hb-me {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100vw;
+  background-size: contain;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+@media (min-width: 992px) {
+  .hb-me {
+    width: 60vw;
+    opacity: 1;
+  }
+}
+
+@media (min-width: 1201px) {
+  .hb-me {
+    width: 50vw;
+  }
+}
+
+.hb-text {
+  padding: 100px 0;
+  position: relative;
+  z-index: 1;
+}
+
+.hb-text h1 {
+  font-size: 90px;
+  font-weight: 800;
+  color: var(--px-white);
+  line-height: 0.9;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+@media (max-width: 1440px) {
+  .hb-text h1 {
+    font-size: 80px;
+  }
+}
+
+@media (max-width: 767px) {
+  .hb-text h1 {
+    font-size: 50px;
+    margin-bottom: 15px;
+  }
+}
+
+.hb-text h1 b {
+  font-weight: 800;
+}
+
+.hb-text h1 span {
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: var(--px-theme);
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+}
+
+.hb-text .lead {
+  font-size: 32px;
+  color: var(--px-white);
+  margin-bottom: 40px;
+}
+
+@media (max-width: 767px) {
+  .hb-text .lead {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+}
+
+.hb-text .lead span {
+  font-weight: 800;
+}
+
+.hb-text .info-bar {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 60px;
+}
+
+.hb-text .info-bar p {
+  margin: 0 40px 0 0;
+  font-weight: 600;
+  color: var(--px-white);
+  font-size: 18px;
+}
+
+@media (max-width: 767px) {
+  .hb-text .info-bar p {
+    font-size: 16px;
+  }
+}
+
+.hb-text .info-bar p span {
   padding-left: 8px;
 }
