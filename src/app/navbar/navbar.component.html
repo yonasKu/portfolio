@@ -9,13 +9,13 @@
     /></a>
   </div>
   <div class="mob-h-right">
-    <button class="toggler-menu">
+    <button class="toggler-menu" (click)="toggleMenu()">
       <span></span>
     </button>
   </div>
 </div>
 
-<div class="navbar-left">
+<div class="navbar-left" [class.menu-open]="isMenuOpen">
   <div class="logo">
     <p class="logo-text">Eglion</p>
   </div>
@@ -55,16 +55,16 @@
 
   <ul class="nav social-link">
     <li>
+      <a href="https://t.me/Truediogenes"><i class="fab fa-telegram"></i></a>
+    </li>
+    <li>
+      <a href="https://www.instagram.com/7he_phineas/"><i class="fab fa-instagram"></i></a>
+    </li>
+    <li>
+      <a href="https://www.linkedin.com/in/yonas-kumelachew-458256259/"><i class="fab fa-linkedin"></i></a>
+    </li>
+    <li>
       <a href="javascript:"><i class="fab fa-twitter"></i></a>
-    </li>
-    <li>
-      <a href="javascript:"><i class="fab fa-instagram"></i></a>
-    </li>
-    <li>
-      <a href="javascript:"><i class="fab fa-facebook"></i></a>
-    </li>
-    <li>
-      <a href="javascript:"><i class="fab fa-pinterest"></i></a>
     </li>
   </ul>
 </div>
