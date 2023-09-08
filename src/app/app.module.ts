@@ -12,9 +12,11 @@ import { ContactComponent } from './contact/contact.component';
 import { ServicesComponent } from './services/services.component';
 import { WorkComponent } from './work/work.component';
 
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule
 @NgModule({
   declarations: [AppComponent, NavbarComponent, HomeComponent, MainComponent, AboutComponent, ContactComponent, ServicesComponent, WorkComponent],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule,HttpClientModule,FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

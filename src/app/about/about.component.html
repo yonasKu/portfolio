@@ -15,7 +15,7 @@
           <span>based in</span> Ethiopia
         </p>
         <div class="btn-bar">
-          <a href="javascript:" class="px-btn">
+          <a [href]="getDownloadLink()" download="CV.pdf" class="px-btn">
             Download CV
             <i class="fas fa-download"></i
           ></a>
@@ -28,7 +28,7 @@
           "Hi, I'm a developer based in Addis Ababa, Ethiopia, born in 2000. I
           specialize in designing and developing websites, mobile apps, and.
           With a passion for creating visually stunning and user-friendly
-          experiences, I am skilled in front-end implementation and mobile
+          experiences, I am skilled in front-end web development and Mobile App
           development. Let's collaborate to bring your ideas to life!"
         </p>
       </div>
@@ -38,14 +38,6 @@
         </div>
         <div class="col-sm-6">
           <p><i class="fas fa-person"></i><span>Yonas Kumelachew</span></p>
-        </div>
-
-        <div class="col-sm-6">
-          <p class="col-sm-email">
-            <!--  <i class="fas fa-envelope"></i>--><span
-              >Yonaskumelachew0@gmail.com</span
-            >
-          </p>
         </div>
 
         <div class="col-sm-6">
@@ -72,8 +64,9 @@
         <blockquote>
           <i class="fa-solid fa-quote-left"></i>
           <p>
-            “Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus
-            sed sit ultrices et sed metus sollicitudin.”
+            " Those who always have virtue in their mouths, and neglect it in
+            practice, are like a harp, which emits a pleasant sound to others,
+            while it is insensitive to music" Diogenes
           </p>
         </blockquote>
       </div>
