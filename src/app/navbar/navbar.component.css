@@ -10,12 +10,7 @@
 .logo-text {
   color: #fff;
 }
-.navbar-left .main-menu {
-  margin: 0;
-  padding: 40px 0 0;
-  list-style: none;
-  flex: 1;
-}
+
 ul {
   display: block;
   list-style-type: disc;
@@ -34,40 +29,7 @@ ol,
 ul {
   padding-left: 2rem;
 }
-.navbar-left .main-menu a.active {
-  opacity: 1;
-}
 
-.navbar-left .main-menu a.active:after {
-  width: 65px;
-}
-
-.navbar-left .main-menu a {
-  padding: 10px 30px;
-  position: relative;
-  display: flex;
-  font-size: 18px;
-  text-transform: uppercase;
-  font-weight: 600;
-  color: #fff;
-  opacity: 0.85;
-}
-.navbar-left .main-menu a:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  width: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(
-    270.16deg,
-    var(--px-theme) 33.61%,
-    rgba(175, 38, 118, 0) 92.05%
-  );
-  transition: ease all 0.35s;
-}
 
 a {
   text-decoration: none;
@@ -201,14 +163,6 @@ svg {
 .logo-light {
   display: none;
 }
-img {
-  max-width: 100%;
-}
-
-img,
-svg {
-  vertical-align: middle;
-}
 
 @media (min-width: 1201px) {
   .mob-header {
@@ -262,7 +216,7 @@ svg {
   text-transform: uppercase;
   font-weight: 600;
   color: var(--px-white);
-  opacity: 0.85;
+  opacity: 0.5;
 }
 
 @media (max-width: 1200px) {
@@ -322,7 +276,7 @@ svg {
   background-color: var(--px-theme);
 }
 
-.navbar-left.menu-open{
-  width: 200;
+.navbar-left.menu-open {
+  width: 220;
   /* Add any other styles you want */
 }
