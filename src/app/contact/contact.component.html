@@ -1,122 +1,120 @@
 <div class="container">
-  <div class="row gy-5">
-    <div class="col-lg-5">
-      <div class="section-heading">
-        <h5>Contact</h5>
-        <h2>Reach out me</h2>
-      </div>
-      <div class="contact-info">
-        <ul>
-          <li>
-            <div class="icon">
-              <i class="fas fa-comment-dots"></i>
-            </div>
-            <div class="text">
-              <label>Chat to us</label>
-              <p>
-                chat to me for help.
-                <span
-                  ><a href="yonas.com" class="text-reset">yonas.com</a></span
-                >
-              </p>
-            </div>
-          </li>
+  <div class="section-heading text-center text-lg-start">
+    <h6>Contact Me</h6>
+    <h2>Let's Connect</h2>
+    <div class="heading-description">
+      <p>Got ideas? Let's collaborate and create something amazing together.</p>
+    </div>
+  </div>
 
-          <li>
+  <div class="contact-wrapper">
+    <div class="row gy-5">
+      <div class="col-lg-5">
+        <div class="contact-info">
+          <div class="info-card">
+            <div class="icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="info-content">
+              <h4>Location</h4>
+              <p>Kebena, Addis Ababa, Ethiopia</p>
+            </div>
+          </div>
+
+          <div class="info-card">
             <div class="icon">
               <i class="fas fa-phone"></i>
             </div>
-            <div class="text">
-              <label>Call us</label>
-              <p>
-                Mon-Fri from 8am to 5pm.
-                <span>+251 (943) 31-8895</span>
-              </p>
+            <div class="info-content">
+              <h4>Phone</h4>
+              <p>+251 (943) 31-8895</p>
+              <span>Mon-Fri from 8am to 5pm</span>
             </div>
-          </li>
-        </ul>
-        <div class="google-map">
-          <div class="ratio ratio-21x9">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d124249.14046343115!2d38.72614826803189!3d9.00028975198439!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x16596f0979b5a3d3%3A0x3f3b8fe0bcf5a5a9!2sKebena%2C%20Addis%20Ababa%2C%20Ethiopia!5e0!3m2!1sen!2s!4v1631061530607!5m2!1sen!2s&zoom=17"
-              allowfullscreen=""
-              loading="lazy"
-            ></iframe>
+          </div>
+
+          <div class="info-card">
+            <div class="icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="info-content">
+              <h4>Email</h4>
+              <p>yonaskifle@gmail.com</p>
+              <span>Always available for collaboration</span>
+            </div>
+          </div>
+
+          <div class="social-links">
+            <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="#" title="Telegram"><i class="fab fa-telegram"></i></a>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="col-lg-7 ps-xl-5">
-      <div class="contact-form bg-g">
-        <div class="contact-head">
-          <h4>Got Ideas? We've got the skills. Let's team up.</h4>
-          <p>Tell me more about yourself and what you're got in mind.</p>
+
+        <div class="map-container">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d124249.14046343115!2d38.72614826803189!3d9.00028975198439!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x16596f0979b5a3d3%3A0x3f3b8fe0bcf5a5a9!2sKebena%2C%20Addis%20Ababa%2C%20Ethiopia!5e0!3m2!1sen!2s!4v1631061530607!5m2!1sen!2s&zoom=17" allowfullscreen="" loading="lazy"></iframe>
         </div>
-        <form id="contact-form" (ngSubmit)="submit()">
-          <div class="row gx-3 gy-4">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label class="form-label">First name</label
-                ><input
-                  name="Name"
-                  [(ngModel)]="name"
-                  id="name"
-                  placeholder="Name *"
-                  type="text"
-                  class="form-control"
-                />
+      </div>
+
+      <div class="col-lg-7">
+        <div class="contact-form">
+          <h3>Send Message</h3>
+          <p>Feel free to get in touch with me. I'm always open to discussing new projects, creative ideas or opportunities.</p>
+          
+          <form id="contact-form" (ngSubmit)="submit()">
+            <div class="row g-4">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input 
+                    type="text" 
+                    class="form-control" 
+                    name="name"
+                    [(ngModel)]="name"
+                    placeholder="Your Name"
+                    required>
+                </div>
               </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label class="form-label">Your Email</label
-                ><input
-                  name="Email"
-                  id="email"
-                  [(ngModel)]="email"
-                  placeholder="Email *"
-                  type="email"
-                  class="form-control"
-                />
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input 
+                    type="email" 
+                    class="form-control" 
+                    name="email"
+                    [(ngModel)]="email"
+                    placeholder="Your Email"
+                    required>
+                </div>
               </div>
-            </div>
-            <div class="col-12">
-              <div class="form-group">
-                <label class="form-label">Subject</label
-                ><input
-                  name="Subject"
-                  [(ngModel)]="subject"
-                  id="subject"
-                  placeholder="Subject *"
-                  type="text"
-                  class="form-control"
-                />
+              <div class="col-12">
+                <div class="form-group">
+                  <input 
+                    type="text" 
+                    class="form-control" 
+                    name="subject"
+                    [(ngModel)]="subject"
+                    placeholder="Subject"
+                    required>
+                </div>
               </div>
-            </div>
-            <div class="col-md-12">
-              <div class="form-group">
-                <label class="form-label">Your message</label
-                ><textarea
-                  name="message"
-                  [(ngModel)]="message"
-                  id="message"
-                  placeholder="Your message *"
-                  rows="6"
-                  class="form-control"
-                  data-gramm="false"
-                  wt-ignore-input="true"
-                ></textarea>
+              <div class="col-12">
+                <div class="form-group">
+                  <textarea 
+                    class="form-control" 
+                    name="message"
+                    [(ngModel)]="message"
+                    rows="5" 
+                    placeholder="Your Message"
+                    required></textarea>
+                </div>
               </div>
-            </div>
-            <div class="col-md-12">
-              <div class="send">
-                <button type="submit" value="Send" class="px-btn dark w-100">
+              <div class="col-12">
+                <button type="submit" class="px-btn">
                   Send Message
+                  <i class="fas fa-paper-plane ms-2"></i>
                 </button>
               </div>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   </div>

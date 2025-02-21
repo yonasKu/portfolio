@@ -1,108 +1,274 @@
 <div class="container">
-  <div class="section-heading">
-    <h6>My Work</h6>
-    <h2>Recent project</h2>
+  <div class="section-heading text-center text-lg-start">
+    <h6>Recent Works</h6>
+    <h2>Featured Projects</h2>
+    <div class="heading-description">
+      <p>Showcasing some of my recent developments and innovations</p>
+    </div>
   </div>
-  <div class="row gy-5 lightbox-gallery">
-    <div class="col-lg-6">
-      <div class="work-box">
-        <div class="work-img">
-          <a
-            href="assets/img/matrixs.png"
-            title="View Gallery"
-            data-title="Caption for image 1"
-            data-lightbox="services"
-            ><img src="assets/img/matrixs.png" title="" alt=""
-          /></a>
+
+  <div class="projects-container">
+    <button class="nav-btn prev-btn" (click)="previousSlide()">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+    
+    <div class="projects-grid" #projectsGrid>
+      <!-- Ethiopian Calendar Extension -->
+      <div class="project-card">
+        <div class="project-image">
+          <img src="assets/img/projects/eth-calendar.jpg" alt="Ethiopian Calendar Extension">
+          <div class="project-overlay">
+            <div class="project-links">
+              <a href="https://github.com/yourusername/ethiopian-calendar-extension" target="_blank" title="View Code">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="https://chrome.google.com/webstore/detail/your-extension" target="_blank" title="Chrome Store">
+                <i class="fab fa-chrome"></i>
+              </a>
+            </div>
+          </div>
         </div>
-        <div class="work-text">
-          <h6>Website matrix fall</h6>
-          <h4>Ethiopian matrix</h4>
-          <div class="btn-bar">
-            <a
-              title="Read More"
-              data-bs-toggle="modal"
-              data-bs-target="#work_1"
-              class="gallery-link"
-              ><i class="fas fa-arrow-up-right-from-square narrow-icon"></i>
-            </a>
+        <div class="project-content">
+          <div class="project-tags">
+            <span>Chrome Extension</span>
+            <span>JavaScript</span>
+            <span>Calendar</span>
+            <span>Amharic</span>
+          </div>
+          <h3>Ethiopian Calendar Extension</h3>
+          <p>A feature-rich Chrome extension providing Ethiopian calendar with date conversion and holiday tracking. Supports both Amharic and Latin scripts.</p>
+          <div class="project-features">
+            <ul>
+              <li>Interactive Calendar Display</li>
+              <li>Dual Script Support (Geez/Latin)</li>
+              <li>Holiday Tracking System</li>
+              <li>Real-time Ethiopian Time</li>
+              <li>Bi-directional Date Conversion</li>
+            </ul>
           </div>
         </div>
       </div>
-    </div>
-    <div class="col-lg-6">
-      <div class="work-box">
-        <div class="work-img">
-          <a
-            href="assets/img/ui.png"
-            title="View Gallery"
-            data-title="Caption for image 2"
-            data-lightbox="services"
-            ><img src="assets/img/ui.png" title="" alt=""
-          /></a>
+
+      <!-- UI Libertatem Extension -->
+      <div class="project-card">
+        <div class="project-image">
+          <img src="assets/img/projects/ui-libertatem.jpg" alt="UI Libertatem">
+          <div class="project-overlay">
+            <div class="project-links">
+              <a href="https://github.com/yonasKu/Ui-libertatem" target="_blank" title="View Code">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="#" target="_blank" title="Live Demo">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
+          </div>
         </div>
-        <div class="work-text">
-          <h6>Navigation Mobile App</h6>
-          <h4>CNM App</h4>
-          <div class="btn-bar">
-            <a
-              title="Read More"
-              data-bs-toggle="modal"
-              data-bs-target="#work_2"
-              class="gallery-link"
-              ><i class="fas fa-arrow-up-right-from-square narrow-icon"></i>
-            </a>
+        <div class="project-content">
+          <div class="project-tags">
+            <span>Chrome Extension</span>
+            <span>JavaScript</span>
+            <span>UI/UX</span>
+          </div>
+          <h3>UI Libertatem</h3>
+          <p>A Chrome extension designed to enhance web browsing freedom and user interface customization.</p>
+          <div class="project-features">
+            <ul>
+              <li>Custom UI Controls</li>
+              <li>Theme Management</li>
+              <li>User Preferences</li>
+            </ul>
           </div>
         </div>
       </div>
-    </div>
-    <div class="col-lg-6">
-      <div class="work-box">
-        <div class="work-img">
-          <a
-            href="assets/img/quote.png"
-            title="View Gallery"
-            data-title="Caption for image 3"
-            data-lightbox="services"
-            ><img src="assets/img/quote.png" title="" alt=""
-          /></a>
+
+      <!-- Navigation Mobile App (CNM) -->
+      <div class="project-card">
+        <div class="project-image">
+          <img src="assets/img/projects/cnm-app.jpg" alt="CNM App">
+          <div class="project-overlay">
+            <div class="project-links">
+              <a href="https://github.com/yourusername/cnm-app" target="_blank" title="View Code">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="#" target="_blank" title="Live Demo">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
+          </div>
         </div>
-        <div class="work-text">
-          <h6>Website</h6>
-          <h4>Quote generator</h4>
-          <div class="btn-bar">
-            <a
-              title="Read More"
-              data-bs-toggle="modal"
-              data-bs-target="#work_3"
-              class="gallery-link"
-              ><i class="fas fa-arrow-up-right-from-square narrow-icon"></i>
-            </a>
+        <div class="project-content">
+          <div class="project-tags">
+            <span>Mobile App</span>
+            <span>Navigation</span>
+            <span>React Native</span>
+          </div>
+          <h3>CNM Navigation App</h3>
+          <p>A comprehensive mobile navigation application providing intuitive route guidance and location services.</p>
+          <div class="project-features">
+            <ul>
+              <li>Real-time Navigation</li>
+              <li>Location Tracking</li>
+              <li>Route Optimization</li>
+            </ul>
           </div>
         </div>
       </div>
-    </div>
-    <div class="col-lg-6">
-      <div class="work-box">
-        <div class="work-img">
-          <a
-            href="assets/img/services-4.jpg"
-            title="View Gallery"
-            data-title="Caption for image 3"
-            data-lightbox="services"
-            ><img src="assets/img/services-4.jpg" title="" alt=""
-          /></a>
+
+      <!-- About Ethiopia App -->
+      <div class="project-card">
+        <div class="project-image">
+          <img src="assets/img/projects/ethiopia-app.jpg" alt="About Ethiopia">
+          <div class="project-overlay">
+            <div class="project-links">
+              <a href="https://github.com/yourusername/about-ethiopia" target="_blank" title="View Code">
+                <i class="fab fa-github"></i>
+              </a>
+              <span class="status-badge">In Progress</span>
+            </div>
+          </div>
         </div>
-        <div class="work-text">
-          <h6>Event and Religious travel notifcation app</h6>
-          <h4>Mahber</h4>
-          <div class="btn-bar">
-            <a title="Read More" href="#work_4" class="gallery-link"
-              ><i class="fas fa-arrow-up-right-from-square narrow-icon"></i>
-            </a>
+        <div class="project-content">
+          <div class="project-tags">
+            <span>React Native</span>
+            <span>Mobile App</span>
+            <span>Educational</span>
+          </div>
+          <h3>About Ethiopia</h3>
+          <p>An informative mobile application showcasing Ethiopia's rich history, culture, and attractions.</p>
+          <div class="project-features">
+            <ul>
+              <li>Cultural Information</li>
+              <li>Historical Sites</li>
+              <li>Interactive Content</li>
+            </ul>
           </div>
         </div>
       </div>
+
+      <!-- Felagi Bot -->
+      <div class="project-card">
+        <div class="project-image">
+          <img src="assets/img/projects/felagi-bot.jpg" alt="Felagi Bot">
+          <div class="project-overlay">
+            <div class="project-links">
+              <a href="https://github.com/yourusername/felagi-bot" target="_blank" title="View Code">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="https://t.me/felagibot" target="_blank" title="Try Bot">
+                <i class="fab fa-telegram"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="project-content">
+          <div class="project-tags">
+            <span>Telegram Bot</span>
+            <span>Python</span>
+            <span>Location Services</span>
+          </div>
+          <h3>Felagi Bot</h3>
+          <p>An intelligent Telegram bot that helps users discover and navigate places in Addis Ababa.</p>
+          <div class="project-features">
+            <ul>
+              <li>Location Discovery</li>
+              <li>Place Recommendations</li>
+              <li>Interactive Navigation</li>
+              <li>Real-time Updates</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Menteko Bot -->
+      <div class="project-card">
+        <div class="project-image">
+          <img src="assets/img/projects/menteko-bot.jpg" alt="Menteko Bot">
+          <div class="project-overlay">
+            <div class="project-links">
+              <a href="https://github.com/yourusername/menteko-bot" target="_blank" title="View Code">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="https://t.me/mentekobot" target="_blank" title="Try Bot">
+                <i class="fab fa-telegram"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="project-content">
+          <div class="project-tags">
+            <span>Telegram Bot</span>
+            <span>Python</span>
+            <span>Moderation</span>
+          </div>
+          <h3>Menteko Bot</h3>
+          <p>A powerful moderation bot for Telegram groups that helps admins maintain order and create a safe environment.</p>
+          <div class="project-features">
+            <ul>
+              <li>Automated Moderation</li>
+              <li>Spam Protection</li>
+              <li>Group Management</li>
+              <li>Custom Rule Enforcement</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Portfolio Management AI -->
+      <div class="project-card">
+        <div class="project-image">
+          <img src="assets/img/projects/portfolio-ai.jpg" alt="Portfolio Management AI">
+          <div class="project-overlay">
+            <div class="project-links">
+              <a href="https://github.com/yourusername/portfolio-management-ai" target="_blank" title="View Code">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="#" target="_blank" title="Live Demo">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="project-content">
+          <div class="project-tags">
+            <span>Python</span>
+            <span>Machine Learning</span>
+            <span>Time Series</span>
+            <span>Finance</span>
+          </div>
+          <h3>Portfolio Management AI</h3>
+          <p>A time series forecasting model for portfolio optimization, predicting asset prices using historical data to balance risk and return.</p>
+          <div class="project-features">
+            <ul>
+              <li>ARIMA & LSTM Models</li>
+              <li>Data Preprocessing Pipeline</li>
+              <li>Risk Analysis</li>
+              <li>Performance Evaluation</li>
+              <li>Portfolio Optimization</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
     </div>
+
+    <button class="nav-btn next-btn" (click)="nextSlide()">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+  </div>
+
+  <div class="navigation-dots">
+    <span *ngFor="let dot of dots; let i = index" 
+          [class.active]="currentSlide === i"
+          (click)="goToSlide(i)">
+    </span>
+  </div>
+
+  <div class="work-cta">
+    <h3>Want to See More?</h3>
+    <p>Check out my GitHub profile for more projects and contributions.</p>
+    <a href="https://github.com/yonasKu" target="_blank" class="px-btn">
+      <i class="fab fa-github"></i> Visit GitHub Profile
+    </a>
   </div>
 </div>
