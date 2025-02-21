@@ -1,0 +1,200 @@
+<div class="container">
+  <div class="section-heading">
+    <h6>My Service</h6>
+    <h2>My Specialties</h2>
+  </div>
+  <div id="accordion_services" class="accordion accordion-flush">
+    <div class="accordion-item">
+      <div class="accordion-header">
+        <button
+          class="accordion-button collapsed"
+          [class.collapsed]="isCollapsed[0]"
+          (click)="toggleCollapse(0)"
+        >
+          <span class="services-title">Web Design</span
+          ><span class="services-small-desc"
+            >I am a passionate and dedicated web designer with a strong focus on
+            creating visually stunning and user-friendly experiences.</span
+          ><span class="accordion-icon"></span>
+        </button>
+      </div>
+      <div
+        id="flush-collapseZero"
+        class="accordion-collapse collapse"
+        [class.show]="!isCollapsed[0]"
+      >
+        <div class="accordion-body">
+          <div class="row gy-4">
+            <div class="col-sm-6 col-md-4">
+              <div class="s-img">
+                <img src="assets/img/web-design.jpg" title="" alt="" />
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-8">
+              <h3>Web Design</h3>
+              <div class="s-text">
+                web designer with a strong focus on creating visually stunning
+                and user-friendly experiences. With expertise in UI design,
+                responsive design, I strive to bring creativity and innovation
+                to every project. My skills in HTML/CSS, web typography, and UX
+                design allow me to craft websites that not only look great but
+                also provide a seamless and enjoyable user experience. I also
+                have a solid understanding of front-end development, which
+                allows me to collaborate effectively with developers.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-header">
+        <button
+          type="button"
+          aria-expanded="false"
+          aria-controls="flush-collapseTwo"
+          class="accordion-button collapsed"
+          [class.collapsed]="isCollapsed[1]"
+          (click)="toggleCollapse(1)"
+        >
+          <span class="services-title">UI/UX Design </span
+          ><span class="services-small-desc"
+            >I am dedicated to creating exceptional user experiences that marry
+            functionality with aesthetics.With a keen eye for detail and
+            user-centered design principles,</span
+          ><span class="accordion-icon"></span>
+        </button>
+      </div>
+      <div
+        id="flush-collapseTwo"
+        data-bs-parent="#accordion_services"
+        class="accordion-collapse collapse"
+        [class.show]="!isCollapsed[1]"
+      >
+        <div class="accordion-body">
+          <div class="row gy-4">
+            <div class="col-sm-6 col-md-4">
+              <div class="s-img">
+                <img src="assets/img/UI-UX.png" title="" alt="" />
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-8">
+              <h3>UI/UX Design</h3>
+              <div class="s-text">
+                I am a beginner UI/UX designer with a passion for creating
+                captivating and user-friendly experiences. With my knowledge of
+                Figma, I specialize in designing visually appealing interfaces
+                that prioritize usability. I have a solid foundation in UI
+                design principles, including layout design, color theory, and
+                typography. While I am still expanding my skill set, my focus on
+                user-centered design and attention to detail allow me to deliver
+                thoughtful solutions. I am excited to showcase my journey as a
+                designer, and I look forward to gaining more experience and
+                refining my skills. Please take a moment to explore my portfolio
+                and feel free to reach out to me.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header">
+        <button
+          type="button"
+          class="accordion-button collapsed"
+          [class.collapsed]="isCollapsed[2]"
+          (click)="toggleCollapse(2)"
+        >
+          <span class="services-title">Web development</span
+          ><span class="services-small-desc">
+            I am a skilled web developer with a passion for creating robust and
+            dynamic web applications.</span
+          ><span class="accordion-icon"></span>
+        </button>
+      </div>
+      <div
+        id="flush-collapseThree"
+        class="accordion-collapse collapse"
+        [class.show]="!isCollapsed[2]"
+      >
+        <div class="accordion-body">
+          <div class="row gy-4">
+            <div class="col-sm-6 col-md-4">
+              <div class="s-img">
+                <img src="assets/img/Development.png" title="" alt="" />
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-8">
+              <h3>Web Developer</h3>
+              <div class="s-text">
+                With a strong foundation in web development essentials and
+                expertise in Angular, React, React Redux, Tailwind CSS, Node.js,
+                and Firebase, I have the tools and knowledge to bring your
+                digital visions to life. Whether it's building responsive and
+                interactive user interfaces, implementing complex state
+                management with React Redux, or designing scalable back-end
+                solutions with Node.js and Firebase, I strive to deliver
+                high-quality and performant web applications. I am well-versed
+                in modern web development practices, including RESTful APIs,
+                responsive design principles, and database integration. Take a
+                moment to explore my portfolio and see examples of web
+                applications I have developed.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-header">
+        <button
+          type="button"
+          class="accordion-button collapsed"
+          [class.collapsed]="isCollapsed[3]"
+          (click)="toggleCollapse(3)"
+        >
+          <span class="services-title">Mobile Application</span
+          ><span class="services-small-desc">
+            I am a skilled mobile app developer specializing in creating
+            cross-platform applications using React Native and Flutter.</span
+          ><span class="accordion-icon"></span>
+        </button>
+      </div>
+      <div
+        id="flush-collapseThree"
+        class="accordion-collapse collapse"
+        [class.show]="!isCollapsed[3]"
+      >
+        <div class="accordion-body">
+          <div class="row gy-4">
+            <div class="col-sm-6 col-md-4">
+              <div class="s-img">
+                <img src="assets/img/mobile.png" title="" alt="" />
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-8">
+              <h3>Mobile Application</h3>
+              <div class="s-text">
+                With a deep understanding of both frameworks, I am able to
+                deliver high-quality, performant, and visually appealing mobile
+                apps for iOS and Android platforms. My expertise lies in
+                developing seamless user interfaces, and integrating APIs to
+                create feature-rich applications. Through my projects, I
+                showcase my ability to leverage the power of React Native and
+                Flutter to build applications with native-like performance and
+                excellent user experiences. I possess a strong foundation in
+                front-end development, including proficiency in JavaScript,
+                TypeScript, and UI design principles. I am passionate about
+                solving problems and turning ideas into reality through clean
+                and maintainable code. Please take a moment to explore my
+                portfolio and examine mobile apps I have developed.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

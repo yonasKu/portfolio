@@ -1,0 +1,61 @@
+<div class="mob-header">
+  <div class="mob-h-left">
+    <a href="javascript:" class="navbar-brand"
+      ><img title="" alt="" src="assets/img/logo.svg" class="logo-dark" /><img
+        title=""
+        alt=""
+        src="assets/img/logo-light.svg"
+        class="logo-light"
+    /></a>
+  </div>
+  <div class="mob-h-right">
+    <button class="toggler-menu" (click)="toggleMenu()">
+      <span></span>
+    </button>
+  </div>
+</div>
+
+<div class="navbar-left" [class.menu-open]="isMenuOpen">
+  <div class="logo">
+    <p class="logo-text">Yonas Kumelachew</p>
+  </div>
+
+  <ul class="main-menu">
+    <li>
+      <a class="menu-item" activeclass="active" href="#home" spyon="home">
+        Home
+      </a>
+    </li>
+    <li>
+      <a class="menu-item" href="#about" spyon="about"> About </a>
+    </li>
+    <li>
+      <a class="menu-item" href="#services" spyon="services"> Services </a>
+    </li>
+    <li>
+      <a class="menu-item" href="#work" spyon="work"> Works </a>
+    </li>
+    <li>
+      <a class="menu-item" href="#contact" spyon="contact"> Contact </a>
+    </li>
+  </ul>
+
+  <ul class="nav social-link">
+    <li>
+      <a href="https://t.me/Truediogenes"><i class="fab fa-telegram"></i></a>
+    </li>
+    <li>
+      <a href="https://www.instagram.com/7he_phineas/"
+        ><i class="fab fa-instagram"></i
+      ></a>
+    </li>
+    <li>
+      <a href="https://www.linkedin.com/in/yonas-kumelachew-458256259/"
+        ><i class="fab fa-linkedin"></i
+      ></a>
+    </li>
+    <li>
+      <a href="javascript:"><i class="fab fa-twitter"></i></a>
+    </li>
+  </ul>
+</div>
