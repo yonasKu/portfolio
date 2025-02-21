@@ -6,10 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./services.component.css'],
 })
 export class ServicesComponent {
-  isCollapsed: boolean[] = [true, true, true, true]; // Initialize with default collapse state for each item
+  isCollapsed: boolean[] = [true, true, true, true, true, true];
 
   toggleCollapse(index: number): void {
-    console.log(this.isCollapsed);
     this.isCollapsed[index] = !this.isCollapsed[index];
   }
 }
