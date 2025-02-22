@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate Icons</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Ethiopic:wght@600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            font-family: sans-serif;
+            background: #f5f5f5;
+        }
+        .preview {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .style-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        .style-group h3 {
+            margin: 0;
+            color: #666;
+        }
+        .icon-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background: #8e44ad;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(142, 68, 173, 0.2);
+        }
+        button:hover {
+            background: #73368a;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(142, 68, 173, 0.3);
+        }
+        .preview-bg {
+            background: #f0f0f0;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .icon-type {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+        .icon-type h3 {
+            color: #af2676;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Icon Generator</h1>
+    <div class="controls">
+        <button onclick="downloadAllIcons()">Download All Icons</button>
+    </div>
+
+    <div class="preview">
+        <div id="icons-container"></div>
+    </div>
+
+    <script>
+        const projectTypes = [
+            { type: 'web', name: 'Web Project', icon: '🌐' },
+            { type: 'mobile', name: 'Mobile App', icon: '📱' },
+            { type: 'bot', name: 'Bot Project', icon: '🤖' },
+            { type: 'extension', name: 'Browser Extension', icon: '🧩' },
+            { type: 'desktop', name: 'Desktop App', icon: '💻' },
+            { type: 'ai', name: 'AI/ML Project', icon: '🧠' }
+        ];
+
+        const size = 200; // Fixed size for better quality
+
+        // Create canvases for each project type
+        const container = document.getElementById('icons-container');
+
+        projectTypes.forEach(projectType => {
+            const typeDiv = document.createElement('div');
+            typeDiv.className = 'icon-type';
+            
+            const typeTitle = document.createElement('h3');
+            typeTitle.textContent = projectType.name;
+            typeDiv.appendChild(typeTitle);
+
+            const previewDiv = document.createElement('div');
+            previewDiv.style.display = 'flex';
+            previewDiv.style.gap = '20px';
+            
+            ['with-bg', 'no-bg'].forEach(style => {
+                const iconContainer = document.createElement('div');
+                iconContainer.className = 'icon-container';
+                
+                const canvas = document.createElement('canvas');
+                canvas.width = size;
+                canvas.height = size;
+                canvas.id = `${projectType.type}-${style}`;
+                canvas.style.border = '1px solid #eee';
+                canvas.style.borderRadius = '4px';
+                canvas.style.width = '128px';
+                canvas.style.height = '128px';
+                
+                const label = document.createElement('div');
+                label.textContent = style === 'with-bg' ? 'With Background' : 'Without Background';
+                
+                iconContainer.appendChild(canvas);
+                iconContainer.appendChild(label);
+                previewDiv.appendChild(iconContainer);
+                
+                generateIcon(canvas, style === 'with-bg', projectType);
+            });
+            
+            typeDiv.appendChild(previewDiv);
+            container.appendChild(typeDiv);
+        });
+
+        function generateIcon(canvas, withBackground, projectType) {
+            const ctx = canvas.getContext('2d');
+            const size = canvas.width;
+
+            // Clear canvas
+            ctx.clearRect(0, 0, size, size);
+
+            if (withBackground) {
+                // Create gradient background
+                const gradient = ctx.createLinearGradient(0, 0, size, size);
+                gradient.addColorStop(0, '#af2676'); // Pink color
+                gradient.addColorStop(1, '#441b45'); // Darker shade
+
+                // Background with rounded corners
+                ctx.fillStyle = gradient;
+                ctx.beginPath();
+                ctx.roundRect(0, 0, size, size, size * 0.2);
+                ctx.fill();
+            }
+
+            // Set text settings
+            ctx.fillStyle = withBackground ? 'white' : '#af2676';
+            ctx.font = `bold ${size * 0.4}px "Noto Sans Ethiopic"`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+
+            // Draw the icon
+            ctx.fillText(projectType.icon, size / 2, size / 2);
+        }
+
+        function downloadAllIcons() {
+            projectTypes.forEach(projectType => {
+                ['with-bg', 'no-bg'].forEach(style => {
+                    const canvas = document.getElementById(`${projectType.type}-${style}`);
+                    const link = document.createElement('a');
+                    link.download = `${projectType.type}-icon-${style}.png`;
+                    link.href = canvas.toDataURL('image/png');
+                    link.click();
+                });
+            });
+        }
+    </script>
+</body>
+</html> 

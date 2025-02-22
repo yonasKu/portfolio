@@ -317,6 +317,7 @@ export class HomeComponent implements OnInit {
   matrixCanvasRef!: ElementRef<HTMLCanvasElement>;
   matrix: Matrix | undefined;
   tickCount = 0;
+  resizeObserver: ResizeObserver | undefined;
 
   ngOnInit() {
     if (this.matrixCanvasRef.nativeElement) {
@@ -339,14 +340,16 @@ export class HomeComponent implements OnInit {
           context.font = fontSize;
 
           this.renderMatrix(context, canvas);
-          this.startAnimation(context, canvas); // Pass the context and canvas to the startAnimation function
         };
 
-        window.addEventListener('resize', handleResize);
-        handleResize();
+        // Use ResizeObserver for better performance
+        this.resizeObserver = new ResizeObserver(handleResize);
+        this.resizeObserver.observe(canvas);
 
-        // Clean up event listener when the component is destroyed
-        window.removeEventListener('resize', handleResize);
+        handleResize(); // Initial call to set up the canvas
+
+        // Start the animation loop
+        this.startAnimation(context, canvas);
       }
     }
   }
@@ -481,11 +484,20 @@ export class HomeComponent implements OnInit {
     context: CanvasRenderingContext2D,
     canvas: HTMLCanvasElement
   ): void {
-    setInterval(() => {
+    const animate = () => {
       if (this.matrix) {
         this.updateMatrix(this.matrix);
         this.renderMatrix(context, canvas);
       }
-    }, FRAME_RATE);
+      requestAnimationFrame(animate); // Use requestAnimationFrame for smoother animations
+    };
+    requestAnimationFrame(animate);
+  }
+
+  ngOnDestroy() {
+    // Clean up the resize observer when the component is destroyed
+    if (this.resizeObserver) {
+      this.resizeObserver.disconnect();
+    }
   }
 }
