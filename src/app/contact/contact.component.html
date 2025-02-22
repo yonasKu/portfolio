@@ -38,7 +38,7 @@
             </div>
             <div class="info-content">
               <h4>Email</h4>
-              <p>yonaskifle@gmail.com</p>
+              <p>yonaskumelachew0@gmail.com</p>
               <span>Always available for collaboration</span>
             </div>
           </div>
@@ -60,56 +60,78 @@
           <h3>Send Message</h3>
           <p>Feel free to get in touch with me. I'm always open to discussing new projects, creative ideas or opportunities.</p>
           
+          <!-- Success Message -->
+          <div class="alert alert-success" *ngIf="submitSuccess">
+            <i class="fas fa-check-circle me-2"></i>
+            Message sent successfully! I'll get back to you soon.
+          </div>
+
+          <!-- Error Message -->
+          <div class="alert alert-danger" *ngIf="submitError">
+            <i class="fas fa-exclamation-circle me-2"></i>
+            Oops! Something went wrong. Please try again.
+          </div>
+          
           <form id="contact-form" (ngSubmit)="submit()">
             <div class="row g-4">
               <div class="col-md-6">
                 <div class="form-group">
+                  <label class="form-label">Full Name</label>
                   <input 
                     type="text" 
                     class="form-control" 
                     name="name"
                     [(ngModel)]="name"
-                    placeholder="Your Name"
+                    placeholder="Enter your full name"
                     required>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
+                  <label class="form-label">Email Address</label>
                   <input 
                     type="email" 
                     class="form-control" 
                     name="email"
                     [(ngModel)]="email"
-                    placeholder="Your Email"
+                    placeholder="Enter your email address"
                     required>
                 </div>
               </div>
               <div class="col-12">
                 <div class="form-group">
+                  <label class="form-label">Subject</label>
                   <input 
                     type="text" 
                     class="form-control" 
                     name="subject"
                     [(ngModel)]="subject"
-                    placeholder="Subject"
+                    placeholder="What is this regarding?"
                     required>
                 </div>
               </div>
               <div class="col-12">
                 <div class="form-group">
+                  <label class="form-label">Message</label>
                   <textarea 
                     class="form-control" 
                     name="message"
                     [(ngModel)]="message"
                     rows="5" 
-                    placeholder="Your Message"
+                    placeholder="Write your message here..."
                     required></textarea>
                 </div>
               </div>
               <div class="col-12">
-                <button type="submit" class="px-btn">
-                  Send Message
-                  <i class="fas fa-paper-plane ms-2"></i>
+                <button type="submit" class="px-btn" [disabled]="isSubmitting">
+                  <span *ngIf="!isSubmitting">
+                    Send Message
+                    <i class="fas fa-paper-plane ms-2"></i>
+                  </span>
+                  <span *ngIf="isSubmitting">
+                    Sending...
+                    <i class="fas fa-spinner fa-spin ms-2"></i>
+                  </span>
                 </button>
               </div>
             </div>

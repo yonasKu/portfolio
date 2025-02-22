@@ -17,45 +17,42 @@
 
 <div class="navbar-left" [class.menu-open]="isMenuOpen">
   <div class="logo">
-    <p class="logo-text">Yonas Kumelachew</p>
+    <p class="logo-text">Eglion</p>
   </div>
 
   <ul class="main-menu">
-    <li>
-      <a class="menu-item" activeclass="active" href="#home" spyon="home">
-        Home
+    <li *ngFor="let item of ['home', 'about', 'services', 'work', 'contact']">
+      <a 
+        class="menu-item" 
+        [class.active]="activeSection === item"
+        [href]="'#' + item"
+        (click)="setActiveSection(item)"
+      >
+        {{ item | titlecase }}
       </a>
-    </li>
-    <li>
-      <a class="menu-item" href="#about" spyon="about"> About </a>
-    </li>
-    <li>
-      <a class="menu-item" href="#services" spyon="services"> Services </a>
-    </li>
-    <li>
-      <a class="menu-item" href="#work" spyon="work"> Works </a>
-    </li>
-    <li>
-      <a class="menu-item" href="#contact" spyon="contact"> Contact </a>
     </li>
   </ul>
 
   <ul class="nav social-link">
     <li>
-      <a href="https://t.me/Truediogenes"><i class="fab fa-telegram"></i></a>
+      <a href="https://t.me/Truediogenes" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-telegram"></i>
+      </a>
     </li>
     <li>
-      <a href="https://www.instagram.com/7he_phineas/"
-        ><i class="fab fa-instagram"></i
-      ></a>
+      <a href="https://www.linkedin.com/in/yonas-kumelachew-458256259/" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-linkedin"></i>
+      </a>
     </li>
     <li>
-      <a href="https://www.linkedin.com/in/yonas-kumelachew-458256259/"
-        ><i class="fab fa-linkedin"></i
-      ></a>
+      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-instagram"></i>
+      </a>
     </li>
     <li>
-      <a href="javascript:"><i class="fab fa-twitter"></i></a>
+      <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-facebook"></i>
+      </a>
     </li>
   </ul>
 </div>
