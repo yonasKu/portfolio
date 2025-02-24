@@ -15,7 +15,7 @@
 }
 
 .section {
-  padding: 100px 0;
+  padding: 50px 0;
   position: relative;
   width: 100%;
 }
@@ -35,6 +35,12 @@
   appearance: none;
   border-radius: var(--bs-border-radius);
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Desktop view */

@@ -275,14 +275,14 @@ const CELL_WIDTH = 20;
 const CELL_HEIGHT = 26;
 const ROWS = MATRIX_HEIGHT / CELL_HEIGHT;
 
-const RAINDROP_SPAWN_RATE = 0.8;
+const RAINDROP_SPAWN_RATE = 0.4;
 
 //const GREENS = ['#15803d', '#16a34a', '#22c55e', '#4ade80'] as const;
 
 const GREENS = ['#441b45', '#4a1f4b', '#522255', '#59265c', '#612a62'] as const;
 const WHITE = '#f0fdf4';
 
-const FRAME_RATE = 1000 / 30;
+const FRAME_RATE = 1000 / 15;
 
 type Greens = (typeof GREENS)[number];
 
@@ -413,9 +413,9 @@ export class HomeComponent implements OnInit {
       const animationComplete = column.ticksLeft <= 0;
 
       if (animationComplete && Math.random() > RAINDROP_SPAWN_RATE) {
-        column.trail = this.getRandomNumberBetween(3, ROWS * 2);
+        column.trail = this.getRandomNumberBetween(3, ROWS * 1.5);
         column.ticksLeft = ROWS + column.trail;
-        column.speed = this.getRandomNumberBetween(1, 6);
+        column.speed = this.getRandomNumberBetween(2, 8);
         column.head = column.cells[0];
         column.head.char = this.getRandomChar();
         column.head.activeFor = column.trail;
