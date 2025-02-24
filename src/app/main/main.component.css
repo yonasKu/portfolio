@@ -7,6 +7,7 @@
   background: linear-gradient(177deg, #100e24 0%, #030211 190%);
   --bs-bg-opacity: 1;
   background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity));
+  width: 100%;
 }
 
 .social-link li {
@@ -16,6 +17,7 @@
 .section {
   padding: 100px 0;
   position: relative;
+  width: 100%;
 }
 
 .form-control {
@@ -35,9 +37,19 @@
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
+/* Desktop view */
 @media (min-width: 1201px) {
   .wrapper {
     padding-left: 225px;
+    width: 100%;
+  }
+}
+
+/* Tablet and mobile view */
+@media (max-width: 1200px) {
+  .wrapper {
+    padding-left: 0;
+    width: 100%;
   }
 }
 

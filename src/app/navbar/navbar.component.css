@@ -5,14 +5,17 @@
 }
 
 .logo {
-  padding: 40px 25px 25px;
-}
-.logo-text {
-  color: #fff;
-  font-size: 24px;
-  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  margin: 0;
+  margin-bottom: 20px;
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  color: #fff;
+  margin-top: 10px;
 }
 
 ul {
@@ -187,7 +190,8 @@ a {
 }
 
 .logo-dark {
-  display: block;
+  max-width: 100%;
+  height: auto;
 }
 img {
   max-width: 100%;
@@ -304,5 +308,102 @@ svg {
 
   .logo {
     padding: 20px 25px;
+  }
+
+  .navbar-left .logo {
+    display: none;
+  }
+  
+  .mob-header .navbar-brand {
+    padding: 0;
+  }
+
+  .main-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 40px 20px;
+    margin: 0;
+    width: 100%;
+  }
+
+  .main-menu a {
+    text-align: left;
+    width: 100%;
+    padding: 12px 25px;
+    position: relative;
+    display: flex;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: rgba(var(--px-white-rgb), 0.7);
+    transition: all 0.3s ease;
+  }
+
+  .main-menu a.active {
+    background: linear-gradient(135deg, var(--px-theme) 0%, var(--px-theme-2) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: var(--px-theme);
+  }
+
+  .main-menu a.active:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 25px;
+    border-radius: 3px 0 0 3px;
+    background: linear-gradient(135deg, var(--px-theme) 0%, var(--px-theme-2) 100%);
+  }
+
+  .social-link {
+    justify-content: center;
+    padding: 20px 0;
+  }
+}
+
+.mob-header .navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mob-header .navbar-brand img {
+  max-height: 40px;
+}
+
+.mob-logo-text {
+  color: var(--px-white);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+@media (min-width: 1201px) {
+  .mob-header {
+    display: none;
+  }
+  
+  .logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .logo-dark {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-top: 10px;
   }
 }
