@@ -270,23 +270,26 @@ const MATRIX_CHARACTERS = [
 
 const MATRIX_HEIGHT = 440;
 
-const CELL_WIDTH = 20;
+const CELL_WIDTH = 16; // Reduced from 20
+const CELL_HEIGHT = 20; // Reduced from 26
+const ROWS = Math.ceil(window.innerHeight / CELL_HEIGHT);
 
-const CELL_HEIGHT = 26;
-const ROWS = MATRIX_HEIGHT / CELL_HEIGHT;
+const RAINDROP_SPAWN_RATE = 0.3; // Lower value means more columns active at once
 
-const RAINDROP_SPAWN_RATE = 0.4;
+const FONT_SIZES = [12, 14, 16, 18, 20, 22, 24, 26] as const;
 
-//const GREENS = ['#15803d', '#16a34a', '#22c55e', '#4ade80'] as const;
-
+// Keep the original purple colors
 const GREENS = ['#441b45', '#4a1f4b', '#522255', '#59265c', '#612a62'] as const;
+// Remove bright greens and use the original colors for all effects
+// const BRIGHT_GREENS = ['#a44ba7', '#b453b8', '#c45bc8', '#d363d7'] as const;
 const WHITE = '#f0fdf4';
 
 const FRAME_RATE = 1000 / 15;
 
 type Greens = (typeof GREENS)[number];
-
+// type BrightGreens = (typeof BRIGHT_GREENS)[number];
 type Color = typeof WHITE | Greens;
+type FontSize = (typeof FONT_SIZES)[number];
 
 type Cell = {
   position: number;
@@ -295,6 +298,9 @@ type Cell = {
   retainChar: number;
   color: Color;
   retainColor: number;
+  fontSize: FontSize;
+  glowing: boolean;
+  opacity: number;
 };
 
 type Column = {
@@ -303,6 +309,9 @@ type Column = {
   trail: number;
   ticksLeft: number;
   speed: number;
+  maxLength: number;
+  opacity: number;
+  glitchChance: number;
 };
 
 type Matrix = Column[];
@@ -357,8 +366,18 @@ export class HomeComponent implements OnInit {
   createMatrix(columns: number, rows: number): Matrix {
     const columnsArr: Column[] = [];
 
+    // Initialize with more active columns at start
+    const initialActiveColumns = Math.floor(columns * 0.4); // 40% of columns active at start
+    const activeColumnIndices = new Set<number>();
+    
+    while (activeColumnIndices.size < initialActiveColumns) {
+      activeColumnIndices.add(Math.floor(Math.random() * columns));
+    }
+
     for (let i = 0; i < columns; i++) {
       const cells: Cell[] = [];
+      // Increase minimum column length (50% to 100% of total rows)
+      const maxLength = Math.floor(rows * (0.5 + Math.random() * 0.5));
 
       for (let j = 0; j < rows; j++) {
         const cell: Cell = {
@@ -368,22 +387,42 @@ export class HomeComponent implements OnInit {
           retainChar: 0,
           color: WHITE,
           retainColor: 0,
+          fontSize: this.getRandomFromArray(FONT_SIZES),
+          glowing: false,
+          opacity: 1,
         };
 
         cells.push(cell);
       }
 
-      columnsArr.push({
+      const column: Column = {
         cells,
         head: undefined,
         trail: 0,
         ticksLeft: 0,
-        speed: 2,
-      });
+        speed: this.getRandomNumberBetween(1, 4), // Even slower speeds for more visibility
+        maxLength,
+        opacity: 1,
+        glitchChance: Math.random() * 0.2,
+      };
+      
+      // Activate initial columns
+      if (activeColumnIndices.has(i)) {
+        column.trail = this.getRandomNumberBetween(5, 25);
+        column.ticksLeft = column.maxLength + column.trail;
+        column.head = column.cells[0];
+        column.head.char = this.getRandomChar();
+        column.head.activeFor = column.trail;
+        column.head.fontSize = this.getRandomFromArray(FONT_SIZES);
+        column.head.glowing = Math.random() < 0.2;
+      }
+
+      columnsArr.push(column);
     }
 
     return columnsArr;
   }
+
   renderMatrix(
     context: CanvasRenderingContext2D,
     canvas: HTMLCanvasElement
@@ -393,44 +432,121 @@ export class HomeComponent implements OnInit {
 
     let x = 0;
     for (const column of this.matrix!) {
+      context.globalAlpha = column.opacity;
+
       let y = CELL_HEIGHT;
       for (const cell of column.cells) {
-        context.fillStyle = cell.color;
-        context.fillText(cell.char, x, y);
+        if (cell.char) {
+          context.font = `${cell.fontSize}px monospace`;
 
+          if (cell.glowing) {
+            context.shadowColor = cell.color;
+            context.shadowBlur = 8;
+            context.fillStyle = cell.color;
+            context.globalAlpha = column.opacity * cell.opacity;
+            context.fillText(cell.char, x, y);
+
+            context.shadowBlur = 0;
+          } else {
+            context.shadowBlur = 0;
+            context.fillStyle = cell.color;
+            context.globalAlpha = column.opacity * cell.opacity;
+            context.fillText(cell.char, x, y);
+          }
+        }
         y += CELL_HEIGHT;
       }
 
       x += CELL_WIDTH;
+      context.globalAlpha = 1;
+      context.shadowBlur = 0;
     }
   }
+
   updateMatrix(matrix: Matrix): void {
+    // Try to spawn new columns more frequently
+    const shouldSpawnNewColumns = this.tickCount % 3 === 0; // Every 3 ticks, try to spawn more columns
+    
+    if (shouldSpawnNewColumns) {
+      // Try to activate more columns
+      for (let i = 0; i < 5; i++) { // Try to activate up to 5 columns
+        const randomColumnIndex = Math.floor(Math.random() * matrix.length);
+        const column = matrix[randomColumnIndex];
+        
+        if (column.head === undefined && Math.random() > RAINDROP_SPAWN_RATE) {
+          // Set a random trail length (more variation)
+          column.trail = this.getRandomNumberBetween(5, 30); // Even longer trails
+          
+          // Set the total animation time based on the column's max length
+          column.ticksLeft = column.maxLength + column.trail;
+          
+          // Randomize speed
+          column.speed = this.getRandomNumberBetween(1, 4);
+          
+          // Start the column
+          column.head = column.cells[0];
+          column.head.char = this.getRandomChar();
+          column.head.activeFor = column.trail;
+          column.head.fontSize = this.getRandomFromArray(FONT_SIZES);
+          column.head.glowing = Math.random() < 0.2; // 20% chance for head to glow
+          
+          // Reset opacity
+          column.opacity = 1;
+        }
+      }
+    }
+    
     for (const column of matrix) {
       if (this.tickCount % column.speed !== 0) {
         continue;
       }
 
+      if (Math.random() < column.glitchChance && column.head) {
+        for (let i = 0; i < column.head.position; i++) {
+          const cell = column.cells[i];
+          if (cell.activeFor > 0) {
+            cell.char = this.getRandomChar();
+            cell.glowing = Math.random() < 0.3;
+          }
+        }
+      }
+
       const animationComplete = column.ticksLeft <= 0;
 
       if (animationComplete && Math.random() > RAINDROP_SPAWN_RATE) {
-        column.trail = this.getRandomNumberBetween(3, ROWS * 1.5);
-        column.ticksLeft = ROWS + column.trail;
-        column.speed = this.getRandomNumberBetween(2, 8);
+        column.trail = this.getRandomNumberBetween(3, 20);
+        column.ticksLeft = column.maxLength + column.trail;
+        column.speed = this.getRandomNumberBetween(1, 8);
         column.head = column.cells[0];
         column.head.char = this.getRandomChar();
         column.head.activeFor = column.trail;
+        column.head.fontSize = this.getRandomFromArray(FONT_SIZES);
+        column.head.glowing = Math.random() < 0.2;
+        column.opacity = 1;
       } else {
         if (column.head) {
-          const nextCell = column.cells[column.head.position + 1];
-          if (nextCell) {
-            column.head = nextCell;
-            nextCell.activeFor = column.trail;
-          } else {
+          if (column.head.position >= column.maxLength - 1) {
             column.head.char = '';
             column.head = undefined;
+            column.opacity = Math.max(0, column.opacity - 0.05);
+          } else {
+            const nextCell = column.cells[column.head.position + 1];
+            if (nextCell) {
+              column.head = nextCell;
+              nextCell.activeFor = column.trail;
+              nextCell.fontSize = this.getRandomFromArray(FONT_SIZES);
+              nextCell.glowing = Math.random() < 0.2;
+            } else {
+              column.head.char = '';
+              column.head = undefined;
+            }
           }
         }
         column.ticksLeft -= 1;
+
+        if (column.head === undefined && column.opacity > 0) {
+          column.opacity = Math.max(0, column.opacity - 0.02);
+        }
       }
 
       for (const cell of column.cells) {
@@ -440,16 +556,26 @@ export class HomeComponent implements OnInit {
             cell.retainColor = 0;
             cell.char = this.getRandomChar();
             cell.retainChar = this.getRandomNumberBetween(1, 10);
+            cell.opacity = 1;
           } else {
             if (cell.retainColor <= 0) {
+              // Use the original purple colors
               cell.color = this.getRandomGreen();
               cell.retainColor = this.getRandomNumberBetween(1, 10);
+
+              if (Math.random() < 0.1) {
+                cell.opacity = 0.5 + Math.random() * 0.5;
+              } else {
+                cell.opacity = 1;
+              }
             } else {
               cell.retainColor -= 1;
             }
             if (cell.retainChar <= 0) {
               cell.char = this.getRandomChar();
               cell.retainChar = this.getRandomNumberBetween(1, 10);
+
+              cell.glowing = Math.random() < 0.1;
             } else {
               cell.retainChar -= 1;
             }
@@ -457,12 +583,14 @@ export class HomeComponent implements OnInit {
           cell.activeFor -= 1;
         } else {
           cell.char = '';
+          cell.glowing = false;
         }
       }
     }
 
     this.tickCount += 1;
   }
+
   getRandomChar(): string {
     return this.getRandomFromArray(MATRIX_CHARACTERS);
   }
@@ -470,6 +598,11 @@ export class HomeComponent implements OnInit {
   getRandomGreen(): Greens {
     return this.getRandomFromArray(GREENS);
   }
+  
+  // Remove the bright green function since we're not using it
+  // getRandomBrightGreen(): BrightGreens {
+  //   return this.getRandomFromArray(BRIGHT_GREENS);
+  // }
 
   getRandomFromArray<T>(array: readonly T[]): T {
     const randomIndex = Math.floor(Math.random() * array.length);
@@ -489,13 +622,12 @@ export class HomeComponent implements OnInit {
         this.updateMatrix(this.matrix);
         this.renderMatrix(context, canvas);
       }
-      requestAnimationFrame(animate); // Use requestAnimationFrame for smoother animations
+      requestAnimationFrame(animate);
     };
     requestAnimationFrame(animate);
   }
 
   ngOnDestroy() {
-    // Clean up the resize observer when the component is destroyed
     if (this.resizeObserver) {
       this.resizeObserver.disconnect();
     }

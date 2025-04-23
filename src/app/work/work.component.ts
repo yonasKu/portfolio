@@ -9,7 +9,7 @@ export class WorkComponent implements AfterViewInit, OnDestroy {
   @ViewChild('projectsGrid') projectsGrid!: ElementRef;
   
   currentSlide = 0;
-  dots: number[] = [0, 1, 2, 3, 4, 5, 6]; // Updated for 7 projects
+  dots: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8]; // Updated for 9 projects
 
   private isDragging = false;
   private startX = 0;
