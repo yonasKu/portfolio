@@ -13,308 +13,59 @@
     </button>
 
     <div class="projects-grid" #projectsGrid>
-      <!-- Scam Alert -->
-      <div class="project-card">
+      <!-- Project Card Loop -->
+      <div class="project-card" *ngFor="let project of projects">
         <div class="project-image">
-          <img src="assets/img/Scam alert image.png" alt="Scam Alert Project">
+          <img [src]="project.imageSrc" [alt]="project.title + ' Project'" />
           <div class="project-overlay">
             <div class="project-links">
-              <a href="https://github.com/yonasKu/Scam-alert" target="_blank" title="View Code">
+              <a
+                *ngIf="project.githubLink"
+                [href]="project.githubLink"
+                target="_blank"
+                title="View Code"
+                (click)="$event.stopPropagation()"
+              >
                 <i class="fab fa-github"></i>
               </a>
-              <a href="https://scam-alert-phi.vercel.app/am" target="_blank" title="Live Demo">
+              <a
+                *ngIf="project.liveLink"
+                [href]="project.liveLink"
+                target="_blank"
+                title="Live Demo"
+                (click)="$event.stopPropagation()"
+              >
                 <i class="fas fa-external-link-alt"></i>
               </a>
+              <span
+                *ngIf="project.status"
+                class="status-badge"
+                (click)="$event.stopPropagation()"
+                >{{ project.status }}</span
+              >
             </div>
           </div>
         </div>
         <div class="project-content">
           <div class="project-tags">
-            <span>Next.js</span>
-            <span>TypeScript</span>
-            <span>Supabase</span>
+            <span *ngFor="let tag of project.tags">{{ tag }}</span>
           </div>
-          <h3>Scam Alert</h3>
-          <p>A comprehensive consumer protection platform where users can report and track unfair business practices.</p>
+          <h3>{{ project.title }}</h3>
+          <p>{{ project.description }}</p>
           <div class="project-features">
             <ul>
-              <li>Multiple Report Types</li>
-              <li>Business Listings</li>
-              <li>Consumer Watchlist</li>
-              <li>Receipt Transparency</li>
-              <li>Responsive Design</li>
+              <li *ngFor="let feature of project.features">{{ feature }}</li>
             </ul>
           </div>
         </div>
+        <button
+          class="details-button"
+          (click)="openModal(project); $event.stopPropagation()"
+        >
+          View Details
+        </button>
       </div>
-
-      <!-- USSD Code Manager -->
-      <div class="project-card">
-        <div class="project-image">
-          <img src="assets/img/logo ussd.png" alt="Mobile Project Placeholder">
-          <div class="project-overlay">
-            <div class="project-links">
-              <a href="https://github.com/yonasKu/Code-Manager" target="_blank" title="View Code">
-                <i class="fab fa-github"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="project-content">
-          <div class="project-tags">
-            <span>React Native</span>
-            <span>Mobile App</span>
-            <span>Utility</span>
-          </div>
-          <h3>USSD Code Manager</h3>
-          <p>A mobile utility app that helps users manage and execute USSD codes with a user-friendly interface.</p>
-          <div class="project-features">
-            <ul>
-              <li>USSD Code Execution</li>
-              <li>Category Organization</li>
-              <li>Favorites System</li>
-              <li>Emergency Services</li>
-              <li>Dark Mode Support</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Ethiopian Calendar Extension -->
-      <div class="project-card">
-        <div class="project-image">
-          <img src="assets/img/calander-extension.png" alt="Extension Project Placeholder">
-          <!-- <img src="assets/img/projects/eth-calendar.jpg" alt="Ethiopian Calendar Extension"> -->
-          <div class="project-overlay">
-            <div class="project-links">
-              <a href="https://github.com/yonasKu/calendar_chrome_extension" target="_blank" title="View Code">
-                <i class="fab fa-github"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="project-content">
-          <div class="project-tags">
-            <span>Chrome Extension</span>
-            <span>JavaScript</span>
-            <span>Calendar</span>
-            <span>Amharic</span>
-          </div>
-          <h3>Ethiopian Calendar Extension</h3>
-          <p>A feature-rich Chrome extension providing Ethiopian calendar with date conversion and holiday tracking.
-            Supports both Amharic and Latin scripts.</p>
-          <div class="project-features">
-            <ul>
-              <li>Interactive Calendar Display</li>
-              <li>Dual Script Support (Geez/Latin)</li>
-              <li>Holiday Tracking System</li>
-              <li>Real-time Ethiopian Time</li>
-              <li>Bi-directional Date Conversion</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- UI Libertatem Extension -->
-      <div class="project-card">
-        <div class="project-image">
-          <img src="assets/img/ui-extension.png" alt="Extension Project Placeholder">
-          <div class="project-overlay">
-            <div class="project-links">
-              <a href="https://github.com/yonasKu/Ui-libertatem" target="_blank" title="View Code">
-                <i class="fab fa-github"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="project-content">
-          <div class="project-tags">
-            <span>Chrome Extension</span>
-            <span>JavaScript</span>
-            <span>UI/UX</span>
-          </div>
-          <h3>UI Libertatem</h3>
-          <p>A Chrome extension designed to enhance web browsing freedom and user interface customization.</p>
-          <div class="project-features">
-            <ul>
-              <li>Custom UI Controls</li>
-              <li>Theme Management</li>
-              <li>User Preferences</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Navigation Mobile App (CNM) -->
-      <div class="project-card">
-        <div class="project-image">
-          <img src="assets/placeholders/mobile-icon-with-bg.png" alt="Mobile Project Placeholder">
-          <div class="project-overlay">
-            <div class="project-links">
-              <a href="https://github.com/yonasKu/CNM/tree/master" target="_blank" title="View Code">
-                <i class="fab fa-github"></i>
-              </a>
-
-            </div>
-          </div>
-        </div>
-        <div class="project-content">
-          <div class="project-tags">
-            <span>Mobile App</span>
-            <span>Navigation</span>
-            <span>React Native</span>
-          </div>
-          <h3>CNM Navigation App</h3>
-          <p>A comprehensive mobile navigation application providing intuitive route guidance and location services.</p>
-          <div class="project-features">
-            <ul>
-              <li>Real-time Navigation</li>
-              <li>Location Tracking</li>
-              <li>Route Optimization</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- About Ethiopia App -->
-      <div class="project-card">
-        <div class="project-image">
-          <img src="assets/placeholders/mobile-icon-with-bg.png" alt="Mobile Project Placeholder">
-
-          <div class="project-overlay">
-            <div class="project-links">
-              <a href="https://github.com/yourusername/about-ethiopia" target="_blank" title="View Code">
-                <i class="fab fa-github"></i>
-              </a>
-              <span class="status-badge">In Progress</span>
-            </div>
-          </div>
-        </div>
-        <div class="project-content">
-          <div class="project-tags">
-            <span>React Native</span>
-            <span>Mobile App</span>
-            <span>Educational</span>
-          </div>
-          <h3>About Ethiopia</h3>
-          <p>An informative mobile application showcasing Ethiopia's rich history, culture, and attractions.</p>
-          <div class="project-features">
-            <ul>
-              <li>Cultural Information</li>
-              <li>Historical Sites</li>
-              <li>Interactive Content</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Felagi Bot -->
-      <div class="project-card">
-        <div class="project-image">
-          <img src="assets/placeholders/bot-icon-with-bg.png" alt="Bot Project Placeholder">
-          <div class="project-overlay">
-            <div class="project-links">
-              <a href="https://github.com/yonasKu/Felagi_bot" target="_blank" title="View Code">
-                <i class="fab fa-github"></i>
-              </a>
-              <a href="https://t.me/Felagi101_bot" target="_blank" title="Try Bot">
-                <i class="fab fa-telegram"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="project-content">
-          <div class="project-tags">
-            <span>Telegram Bot</span>
-            <span>Python</span>
-            <span>Location Services</span>
-          </div>
-          <h3>Felagi Bot</h3>
-          <p>An intelligent Telegram bot that helps users discover and navigate places in Addis Ababa.</p>
-          <div class="project-features">
-            <ul>
-              <li>Location Discovery</li>
-              <li>Place Recommendations</li>
-              <li>Interactive Navigation</li>
-              <li>Real-time Updates</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Menteko Bot -->
-      <div class="project-card">
-        <div class="project-image">
-          <img src="assets/placeholders/bot-icon-with-bg.png" alt="Bot Project Placeholder">
-          <div class="project-overlay">
-            <div class="project-links">
-              <a href="https://github.com/yonasKu/MentekoBotModeration-Bot-" target="_blank" title="View Code">
-                <i class="fab fa-github"></i>
-              </a>
-              <a href="https://t.me/mentekobot" target="_blank" title="Try Bot">
-                <i class="fab fa-telegram"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="project-content">
-          <div class="project-tags">
-            <span>Telegram Bot</span>
-            <span>Python</span>
-            <span>Moderation</span>
-          </div>
-          <h3>Menteko Bot</h3>
-          <p>A powerful moderation bot for Telegram groups that helps admins maintain order and create a safe
-            environment.</p>
-          <div class="project-features">
-            <ul>
-              <li>Automated Moderation</li>
-              <li>Anti-Spam Protection</li>
-              <li>Custom Commands</li>
-              <li>User Management</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Portfolio Management AI -->
-      <div class="project-card">
-        <div class="project-image">
-          <img src="assets/placeholders/ai-icon-with-bg.png" alt="AI Project Placeholder">
-
-          <div class="project-overlay">
-
-            <div class="project-links">
-              <a href="https://github.com/yonasKu/Time-Series-Forecasting-for-Portfolio-Management-Optimization-"
-                target="_blank" title="View Code">
-                <i class="fab fa-github"></i>
-              </a>
-
-            </div>
-          </div>
-        </div>
-        <div class="project-content">
-          <div class="project-tags">
-            <span>Python</span>
-            <span>Machine Learning</span>
-            <span>Time Series</span>
-            <span>Finance</span>
-          </div>
-          <h3>Portfolio Management AI</h3>
-          <p>A time series forecasting model for portfolio optimization, predicting asset prices using historical data
-            to balance risk and return.</p>
-          <div class="project-features">
-            <ul>
-              <li>ARIMA & LSTM Models</li>
-              <li>Data Preprocessing Pipeline</li>
-              <li>Risk Analysis</li>
-              <li>Performance Evaluation</li>
-              <li>Portfolio Optimization</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
+      <!-- End Project Card Loop -->
     </div>
 
     <button class="nav-btn next-btn" (click)="nextSlide()">
@@ -323,7 +74,11 @@
   </div>
 
   <div class="navigation-dots">
-    <span *ngFor="let dot of dots; let i = index" [class.active]="currentSlide === i" (click)="goToSlide(i)">
+    <span
+      *ngFor="let dot of dots; let i = index"
+      [class.active]="currentSlide === i"
+      (click)="goToSlide(i)"
+    >
     </span>
   </div>
 
@@ -334,4 +89,10 @@
       <i class="fab fa-github"></i> Visit GitHub Profile
     </a>
   </div>
+
+  <app-project-detail-modal
+    *ngIf="isModalVisible"
+    [project]="selectedProject"
+    (closeModalEvent)="closeModal()"
+  ></app-project-detail-modal>
 </div>

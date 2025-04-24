@@ -1,0 +1,202 @@
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050; /* Ensure it's above other content */
+  padding: 20px;
+  box-sizing: border-box;
+  font-family: 'IBM Plex Sans', sans-serif; /* Apply theme font */
+}
+
+.modal-content {
+  position: relative;
+  background-color: #1a1830; /* Darker background to fit theme */
+  color: #e0e0e0; /* Light text color for dark background */
+  padding: 30px;
+  border-radius: 8px;
+  max-width: 700px; /* Max width of the modal */
+  width: 90%; /* Responsive width */
+  max-height: 90vh; /* Max height */
+  overflow-y: auto; /* Allow scrolling for long content */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Simple fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #a0a0a0; /* Lighter grey for dark bg */
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+}
+
+.close-button:hover {
+  color: #ffffff; /* White hover */
+}
+
+h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #ffffff; /* Bright white heading */
+  text-align: center;
+}
+
+.modal-image-container {
+  text-align: center;
+  margin-bottom: 20px;
+  max-height: 300px; /* Limit image height */
+  overflow: hidden;
+}
+
+.modal-image-container img {
+  max-width: 100%;
+  height: auto;
+  max-height: 300px;
+  border-radius: 4px;
+}
+
+.modal-description {
+  margin-bottom: 20px;
+  line-height: 1.6;
+  color: #c0c0c0; /* Slightly dimmer text for description */
+}
+
+/* Styling for Project Goals */
+.modal-goals {
+  margin-bottom: 20px;
+}
+
+.modal-goals h4 {
+  color: #e0e0e0; /* Match heading color */
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+
+.modal-goals p {
+  color: #c0c0c0; /* Match description text color */
+  line-height: 1.6;
+}
+
+/* Styling for Technical Stack */
+.modal-tech-stack {
+  margin-bottom: 20px;
+}
+
+.modal-tech-stack h4 {
+  color: #e0e0e0; /* Match heading color */
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+.modal-tech-stack ul {
+  list-style: disc; /* Use standard bullet points */
+  padding-left: 20px; /* Indent the list */
+  margin: 0;
+}
+
+.modal-tech-stack li {
+  color: #c0c0c0; /* Match description text color */
+  margin-bottom: 5px; /* Space between stack items */
+  line-height: 1.5;
+}
+
+.modal-tags {
+  margin-bottom: 20px;
+}
+
+.modal-tags .tag {
+  display: inline-block;
+  background-color: #333; /* Darker tag background */
+  color: #ccc; /* Lighter tag text */
+  padding: 4px 8px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+/* Styling for Screenshots */
+.modal-screenshots {
+  margin-bottom: 20px;
+}
+
+.modal-screenshots h4 {
+  color: #e0e0e0; /* Match heading color */
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+}
+
+.screenshot-container {
+  display: flex;
+  flex-wrap: wrap; /* Allow images to wrap */
+  gap: 15px; /* Space between images */
+  justify-content: center; /* Center images if they don't fill the row */
+}
+
+.screenshot-image {
+  max-width: 100%; /* Ensure image fits within modal */
+  height: auto; /* Maintain aspect ratio */
+  max-height: 150px; /* Limit height to keep modal reasonable */
+  border: 1px solid #444; /* Subtle border */
+  border-radius: 4px;
+  object-fit: contain; /* Changed from cover to contain */
+  cursor: pointer; /* Indicate potential for zoom/lightbox later */
+  transition: transform 0.2s ease;
+}
+
+.screenshot-image:hover {
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+
+.modal-links {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.modal-link {
+  display: inline-block;
+  margin: 0 10px;
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500; /* Slightly bolder links */
+  transition: background-color 0.2s ease;
+}
+
+.modal-link i {
+  margin-right: 8px;
+}
+
+.github-link {
+  background-color: #333;
+  color: #f0f0f0; /* Ensure text is light */
+}
+.github-link:hover {
+  background-color: #555;
+}
+
+.live-link {
+  background-color: #0d6efd; /* Using a standard blue from your CSS vars, adjust if needed */
+  color: #ffffff;
+}
+.live-link:hover {
+  background-color: #0b5ed7;
+}

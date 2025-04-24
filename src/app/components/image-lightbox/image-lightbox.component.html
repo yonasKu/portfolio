@@ -1,0 +1,6 @@
+<div class="lightbox-backdrop" (click)="closeLightbox()" *ngIf="imageUrl">
+  <div class="lightbox-content">
+    <span class="lightbox-close" (click)="closeLightbox()">&times;</span>
+    <img [src]="imageUrl" alt="Lightbox Image" (click)="onImageClick($event)">
+  </div>
+</div>

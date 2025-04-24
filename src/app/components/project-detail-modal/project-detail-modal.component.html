@@ -1,0 +1,73 @@
+<!-- Modal Backdrop - closes modal when clicked -->
+<div class="modal-backdrop" (click)="close()">
+
+  <!-- Modal Content - prevents closing when clicked inside -->
+  <div class="modal-content" *ngIf="project" (click)="stopPropagation($event)">
+
+    <!-- Close Button -->
+    <button class="close-button" (click)="close()">&times;</button>
+
+    <!-- Project Title -->
+    <h2>{{ project.title }}</h2>
+
+    <!-- Project Image (Optional) -->
+    <div class="modal-image-container" *ngIf="project.imageSrc">
+      <img [src]="project.imageSrc" [alt]="project.title + ' image'">
+    </div>
+
+    <!-- Detailed Description -->
+    <div class="modal-description">
+      <p>{{ project.detailedDescription }}</p>
+    </div>
+
+    <!-- Project Goals -->
+    <div *ngIf="project.projectGoals" class="modal-goals">
+      <h4>Project Goals</h4>
+      <p>{{ project.projectGoals }}</p>
+    </div>
+
+    <!-- Technical Stack -->
+    <div *ngIf="project.technicalStack && project.technicalStack.length > 0" class="modal-tech-stack">
+      <h4>Technical Stack</h4>
+      <ul>
+        <li *ngFor="let tech of project.technicalStack">{{ tech }}</li>
+      </ul>
+    </div>
+
+    <!-- Tags -->
+    <div class="modal-tags">
+      <strong>Tags:</strong>
+      <span *ngFor="let tag of project.tags" class="tag">{{ tag }}</span>
+    </div>
+
+    <!-- Screenshots -->
+    <div *ngIf="project.screenshots && project.screenshots.length > 0" class="modal-screenshots">
+      <h4>Screenshots</h4>
+      <div class="screenshot-container">
+        <img *ngFor="let screenshotUrl of project.screenshots" 
+             [src]="screenshotUrl" 
+             alt="Project screenshot" 
+             class="screenshot-image"
+             (click)="openLightbox(screenshotUrl)">
+      </div>
+    </div>
+
+    <!-- Links -->
+    <div class="modal-links">
+      <a *ngIf="project.githubLink" [href]="project.githubLink" target="_blank" class="modal-link github-link">
+        <i class="fab fa-github"></i> View Code
+      </a>
+      <a *ngIf="project.liveLink" [href]="project.liveLink" target="_blank" class="modal-link live-link">
+        <i class="fas fa-external-link-alt"></i> Live Demo
+      </a>
+    </div>
+
+  </div>
+
+</div>
+
+<app-image-lightbox 
+  *ngIf="selectedImageUrl" 
+  [imageUrl]="selectedImageUrl" 
+  (close)="closeLightbox()">
+</app-image-lightbox>
