@@ -22,7 +22,8 @@
               "src/favicon.ico",
               "src/assets",
               "src/robots.txt",
-              "src/sitemap.xml"
+              "src/sitemap.xml",
+              "src/google1929f1cbc3dfdb28.html"
             ],
             "styles": [
               "src/styles.css",
@@ -80,7 +81,7 @@
           "options": {
             "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
-            "assets": ["src/favicon.ico", "src/assets"],
+            "assets": ["src/favicon.ico", "src/assets", "src/robots.txt", "src/sitemap.xml", "src/google1929f1cbc3dfdb28.html"],
             "styles": ["src/styles.css"],
             "scripts": []
           }
