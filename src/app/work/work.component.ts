@@ -113,43 +113,44 @@ export class WorkComponent implements AfterViewInit, OnDestroy, OnInit {
     },
     {
       id: 7,
-      title: "Food Recipe Mobile App",
-      imageSrc: "assets/placeholders/mobile-icon-with-bg.png",
-      tags: ["Mobile App", "Food", "React Native"],
-      description: "A mobile application for discovering, saving, and sharing food recipes.",
-      features: ["Recipe Search", "Ingredient Management", "Cooking Instructions", "User Ratings"],
-      githubLink: "https://github.com/yonasKu/Recipe-app",
-      detailedDescription: "Your go-to mobile companion for culinary exploration. Search thousands of recipes, create shopping lists from ingredients, follow step-by-step instructions, and share your creations with a community of food lovers.",
-      technicalStack: [], // TODO: Add data
-      projectGoals: '', // TODO: Add data
-      screenshots: [] // TODO: Add screenshot URLs if available
+      title: "Felagi Bot",
+      imageSrc: "assets/placeholders/bot-icon-with-bg.png",
+      tags: ["Telegram Bot", "Python", "Location Services"],
+      description: "An intelligent Telegram bot that helps users discover and navigate places in Addis Ababa.",
+      features: ["Location Discovery", "Place Recommendations", "Interactive Navigation", "Real-time Updates"],
+      githubLink: "https://github.com/yonasKu/Felagi_bot",
+      liveLink: "https://t.me/Felagi101_bot",
+      detailedDescription: "Felagi Bot is designed to help users discover places and navigate around Addis Ababa using Telegram. It provides recommendations and real-time updates for locations.",
+      technicalStack: [],
+      projectGoals: '',
+      screenshots: []
     },
     {
       id: 8,
-      title: "YegnaGebeya Online Market",
-      imageSrc: "assets/img/market place image.png",
-      tags: ["Web App", "E-commerce", "Next.js", "Node.js", "MongoDB"],
-      description: "An online marketplace platform connecting local buyers and sellers.",
-      features: ["Product Listings", "User Authentication", "Search & Filtering", "Shopping Cart", "Seller Dashboard"],
-      githubLink: "https://github.com/yonasKu/MarketPlace-Project",
-      liveLink: "https://market-place-project-opal.vercel.app/",
-      detailedDescription: "YegnaGebeya provides a digital space for local commerce. Sellers can easily list products, manage inventory, and interact with buyers. Buyers benefit from a wide selection, secure transactions, and user reviews.",
-      technicalStack: [], // TODO: Add data
-      projectGoals: '', // TODO: Add data
-      screenshots: [] // TODO: Add screenshot URLs if available
+      title: "Menteko Bot",
+      imageSrc: "assets/placeholders/bot-icon-with-bg.png",
+      tags: ["Telegram Bot", "Python", "Moderation"],
+      description: "A powerful moderation bot for Telegram groups that helps admins maintain order and create a safe environment.",
+      features: ["Automated Moderation", "Spam Protection", "Group Management", "Custom Rule Enforcement"],
+      githubLink: "https://github.com/yonasKu/MentekoBotModeration-Bot-",
+      liveLink: "https://t.me/mentekobot",
+      detailedDescription: "Menteko Bot assists Telegram group admins by providing robust moderation tools, spam protection, and group management features.",
+      technicalStack: [],
+      projectGoals: '',
+      screenshots: []
     },
     {
       id: 9,
-      title: "Code Testing Telegram Bot",
-      imageSrc: "assets/placeholders/bot-icon-with-bg.png",
-      tags: ["Bot", "Telegram", "Node.js", "Testing"],
-      description: "A Telegram bot designed to execute and test code snippets in various programming languages.",
-      features: ["Multi-language Support", "Code Execution Sandbox", "Result Output", "Usage Statistics"],
-      githubLink: "https://github.com/yonasKu/test-Code-bot",
-      detailedDescription: "A convenient Telegram bot for developers and learners. Quickly test code snippets on the go without setting up a local environment. Supports popular languages and provides immediate feedback.",
-      technicalStack: [], // TODO: Add data
-      projectGoals: '', // TODO: Add data
-      screenshots: [] // TODO: Add screenshot URLs if available
+      title: "Portfolio Management AI",
+      imageSrc: "assets/placeholders/ai-icon-with-bg.png",
+      tags: ["Python", "Machine Learning", "Time Series", "Finance"],
+      description: "A time series forecasting model for portfolio optimization, predicting asset prices using historical data to balance risk and return.",
+      features: ["ARIMA & LSTM Models", "Data Preprocessing Pipeline", "Risk Analysis", "Performance Evaluation", "Portfolio Optimization"],
+      githubLink: "https://github.com/yonasKu/Time-Series-Forecasting-for-Portfolio-Management-Optimization-",
+      detailedDescription: "This project leverages machine learning (ARIMA & LSTM) for financial time series forecasting and portfolio optimization.",
+      technicalStack: [],
+      projectGoals: '',
+      screenshots: []
     }
   ];
 
