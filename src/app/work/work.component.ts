@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef, AfterViewInit, OnDestroy, OnInit } from '@angular/core';
+ import { Component, ViewChild, ElementRef, AfterViewInit, OnDestroy, OnInit } from '@angular/core';
 
 // Define the Project interface
 export interface Project {
@@ -150,6 +150,19 @@ export class WorkComponent implements AfterViewInit, OnDestroy, OnInit {
       detailedDescription: "This project leverages machine learning (ARIMA & LSTM) for financial time series forecasting and portfolio optimization.",
       technicalStack: [],
       projectGoals: '',
+      screenshots: []
+    },
+    {
+      id: 10,
+      title: "SproutBook",
+      imageSrc: "assets/placeholders/mobile-icon-with-bg.png",
+      tags: ["React Native", "Firebase", "AI", "Client Project"],
+      description: "A family journaling mobile app with AI-powered recaps. Built for a client to help parents document memories and receive automated weekly, monthly, and yearly summaries.",
+      features: ["AI-Generated Recaps", "Family Sharing", "Media Journal Entries", "Push Notifications", "Subscription Management", "Web Dashboard"],
+      status: "Client Project",
+      detailedDescription: "SproutBook is a comprehensive family journaling platform developed for a client. Parents create journal entries with media, manage children profiles, and receive AI-generated recaps. The app includes family sharing with invitations and permissions, subscription management via RevenueCat and Stripe, and a separate Next.js web app for admin dashboards. Built with Expo React Native for mobile (iOS/Android), Firebase backend (Firestore, Cloud Functions, Storage), and OpenAI for intelligent recap generation.",
+      technicalStack: ['Expo React Native', 'TypeScript', 'Firebase', 'Cloud Functions', 'OpenAI API', 'RevenueCat', 'Stripe', 'Next.js'],
+      projectGoals: 'To create a seamless family journaling experience with automated AI-powered memory recaps, enabling families to preserve and share precious moments effortlessly.',
       screenshots: []
     }
   ];
