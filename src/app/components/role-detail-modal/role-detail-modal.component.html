@@ -1,0 +1,74 @@
+<!-- Modal Backdrop - closes modal when clicked -->
+<div class="modal-backdrop" (click)="close()">
+
+  <!-- Modal Content - prevents closing when clicked inside -->
+  <div class="modal-content" *ngIf="app" (click)="stopPropagation($event)">
+
+    <!-- Close Button -->
+    <button class="close-button" (click)="close()">&times;</button>
+
+    <!-- App Header -->
+    <div class="role-header">
+      <div class="company-logo">
+        <img [src]="app.imageSrc" [alt]="app.title + ' App'">
+      </div>
+      <div class="role-title-info">
+        <h2>{{ app.title }}</h2>
+        <h3>{{ app.company }}</h3>
+        <div class="role-meta">
+          <span class="app-type" [class]="'app-type-' + app.type">
+            <i class="fas fa-university" *ngIf="app.type === 'banking'"></i>
+            <i class="fas fa-handshake" *ngIf="app.type === 'client'"></i>
+            <i class="fas fa-building" *ngIf="app.type === 'enterprise'"></i>
+            {{ app.type | titlecase }}
+          </span>
+          <span class="status">
+            <i class="fas fa-circle"></i>
+            {{ app.status }}
+          </span>
+          <span class="user-base">
+            <i class="fas fa-users"></i>
+            {{ app.userBase }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- App Description -->
+    <div class="modal-description">
+      <p>{{ app.detailedDescription }}</p>
+    </div>
+
+    <!-- App Features -->
+    <div *ngIf="app.features && app.features.length > 0" class="modal-features">
+      <h4>Key Features</h4>
+      <div class="features-grid">
+        <div *ngFor="let feature of app.features" class="feature-item">
+          <i class="fas fa-check-circle"></i>
+          {{ feature }}
+        </div>
+      </div>
+    </div>
+
+    <!-- Key Achievements -->
+    <div *ngIf="app.achievements && app.achievements.length > 0" class="modal-achievements">
+      <h4>Development Achievements</h4>
+      <ul>
+        <li *ngFor="let achievement of app.achievements">
+          <i class="fas fa-trophy"></i>
+          {{ achievement }}
+        </li>
+      </ul>
+    </div>
+
+    <!-- Technical Stack -->
+    <div *ngIf="app.technicalStack && app.technicalStack.length > 0" class="modal-tech-stack">
+      <h4>Technical Stack</h4>
+      <div class="tech-grid">
+        <span *ngFor="let tech of app.technicalStack" class="tech-badge">{{ tech }}</span>
+      </div>
+    </div>
+
+  </div>
+
+</div>

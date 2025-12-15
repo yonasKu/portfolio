@@ -152,19 +152,61 @@ export class WorkComponent implements AfterViewInit, OnDestroy, OnInit {
       projectGoals: '',
       screenshots: []
     },
-    {
-      id: 10,
-      title: "SproutBook",
-      imageSrc: "assets/placeholders/mobile-icon-with-bg.png",
-      tags: ["React Native", "Firebase", "AI", "Client Project"],
-      description: "A family journaling mobile app with AI-powered recaps. Built for a client to help parents document memories and receive automated weekly, monthly, and yearly summaries.",
-      features: ["AI-Generated Recaps", "Family Sharing", "Media Journal Entries", "Push Notifications", "Subscription Management", "Web Dashboard"],
-      status: "Client Project",
-      detailedDescription: "SproutBook is a comprehensive family journaling platform developed for a client. Parents create journal entries with media, manage children profiles, and receive AI-generated recaps. The app includes family sharing with invitations and permissions, subscription management via RevenueCat and Stripe, and a separate Next.js web app for admin dashboards. Built with Expo React Native for mobile (iOS/Android), Firebase backend (Firestore, Cloud Functions, Storage), and OpenAI for intelligent recap generation.",
-      technicalStack: ['Expo React Native', 'TypeScript', 'Firebase', 'Cloud Functions', 'OpenAI API', 'RevenueCat', 'Stripe', 'Next.js'],
-      projectGoals: 'To create a seamless family journaling experience with automated AI-powered memory recaps, enabling families to preserve and share precious moments effortlessly.',
-      screenshots: []
-    }
+    // SproutBook and DeFi projects moved to Professional Experience section
+    // {
+    //   id: 10,
+    //   title: "SproutBook",
+    //   imageSrc: "assets/placeholders/mobile-icon-with-bg.png",
+    //   tags: ["React Native", "Firebase", "AI", "Client Project"],
+    //   description: "A family journaling mobile app with AI-powered recaps. Built for a client to help parents document memories and receive automated weekly, monthly, and yearly summaries.",
+    //   features: ["AI-Generated Recaps", "Family Sharing", "Media Journal Entries", "Push Notifications", "Subscription Management", "Web Dashboard"],
+    //   status: "Client Project",
+    //   detailedDescription: "SproutBook is a comprehensive family journaling platform developed for a client. Parents create journal entries with media, manage children profiles, and receive AI-generated recaps. The app includes family sharing with invitations and permissions, subscription management via RevenueCat and Stripe, and a separate Next.js web app for admin dashboards. Built with Expo React Native for mobile (iOS/Android), Firebase backend (Firestore, Cloud Functions, Storage), and OpenAI for intelligent recap generation.",
+    //   technicalStack: ['Expo React Native', 'TypeScript', 'Firebase', 'Cloud Functions', 'OpenAI API', 'RevenueCat', 'Stripe', 'Next.js'],
+    //   projectGoals: 'To create a seamless family journaling experience with automated AI-powered memory recaps, enabling families to preserve and share precious moments effortlessly.',
+    //   screenshots: []
+    // },
+    // {
+    //   id: 11,
+    //   title: "Day - DeFi App",
+    //   imageSrc: "assets/placeholders/defi-icon-with-bg.png",
+    //   tags: ["React Native", "Web3", "DeFi", "Blockchain"],
+    //   description: "A decentralized finance application integrating Privy Wallet for secure transactions and 0x API for gasless trading operations.",
+    //   features: ["Privy Wallet Integration", "Gasless Transactions", "DeFi Trading", "Secure Crypto Operations", "Real-time Market Data", "Multi-chain Support"],
+    //   githubLink: "https://github.com/yonasKu/day-defi-app",
+    //   status: "In Development",
+    //   detailedDescription: "Day is a user-friendly DeFi application that makes decentralized finance accessible to everyday users. Built with React Native, it integrates Privy Wallet for secure wallet management and uses 0x API for cost-effective, gasless transactions. The app provides intuitive interfaces for complex DeFi operations including swapping, staking, and yield farming while maintaining the highest security standards.",
+    //   technicalStack: ['React Native', 'Privy Wallet', '0x API', 'Web3.js', 'Ethereum', 'Smart Contracts', 'TypeScript'],
+    //   projectGoals: 'To democratize access to decentralized finance by creating an intuitive mobile app that simplifies complex DeFi operations for mainstream users.',
+    //   screenshots: []
+    // },
+    // {
+    //   id: 12,
+    //   title: "CBE Mobile Banking App",
+    //   imageSrc: "assets/placeholders/banking-icon-with-bg.png",
+    //   tags: ["React Native", "Banking", "FinTech", "Enterprise"],
+    //   description: "Contributing to the development of Commercial Bank of Ethiopia's mobile banking application, serving millions of customers nationwide.",
+    //   features: ["Secure Banking Transactions", "Account Management", "Money Transfer", "Bill Payments", "Loan Services", "Multi-language Support"],
+    //   status: "Production - Eaglelion Systems",
+    //   detailedDescription: "As part of the development team at Eaglelion System Technology, I contribute to the newly implemented CBE App - Ethiopia's largest commercial bank's mobile banking solution. The app serves millions of customers with secure banking features, real-time transactions, and comprehensive financial services. My role involves implementing new features, ensuring security compliance, and optimizing performance for the large-scale user base.",
+    //   technicalStack: ['React Native', 'Banking APIs', 'Security Protocols', 'Biometric Auth', 'Encryption', 'Real-time Systems'],
+    //   projectGoals: 'To provide secure, reliable, and user-friendly mobile banking services to millions of Ethiopian customers, promoting financial inclusion and digital transformation.',
+    //   screenshots: []
+    // },
+    // Dashen Bank project moved to Professional Experience section
+    // {
+    //   id: 13,
+    //   title: "Dashen Bank Mobile App",
+    //   imageSrc: "assets/placeholders/banking-icon-with-bg.png",
+    //   tags: ["React Native", "Banking", "FinTech", "Enterprise"],
+    //   description: "Leading major updates and new feature implementations for Dashen Bank's mobile banking application, one of Ethiopia's premier private banks.",
+    //   features: ["Advanced Banking Features", "Enhanced Security", "Digital Wallet", "Investment Services", "Customer Support", "Performance Optimization"],
+    //   status: "Production - Eaglelion Systems",
+    //   detailedDescription: "Working on major updates and new feature implementations for the Dashen Bank App at Eaglelion System Technology. Dashen Bank is one of Ethiopia's leading private banks, and I'm responsible for enhancing the mobile banking experience through new features, improved security measures, and performance optimizations. The app serves thousands of customers with comprehensive banking and financial services.",
+    //   technicalStack: ['React Native', 'Advanced Banking APIs', 'Security Frameworks', 'Performance Optimization', 'UI/UX Enhancement'],
+    //   projectGoals: 'To enhance the mobile banking experience for Dashen Bank customers by implementing cutting-edge features and maintaining the highest standards of security and performance.',
+    //   screenshots: []
+    // }
   ];
 
   // --- Carousel Logic (Existing) ---
