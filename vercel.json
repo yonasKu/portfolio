@@ -4,16 +4,6 @@
   "devCommand": "npm run start",
   "installCommand": "npm install",
   "framework": null,
-  "functions": {
-    "node": {
-      "runtime": "nodejs24.x"
-    }
-  },
-  "build": {
-    "env": {
-      "NODE_VERSION": "24"
-    }
-  },
   "rewrites": [
     {
       "source": "/(.*)",
