@@ -31,19 +31,20 @@ export class ProfessionalExperienceComponent implements AfterViewInit, OnDestroy
       title: 'Dashen Bank Mobile App',
       company: 'Eaglelion System Technology',
       imageSrc: 'assets/placeholders/banking-icon-with-bg.png',
-      tags: ['React Native', 'Banking', 'FinTech', 'Enterprise'],
-      description: 'Leading major updates and new feature implementations for one of Ethiopia\'s premier private banks using React Native framework.',
-      features: ['Advanced Banking Features', 'Enhanced Security', 'Digital Wallet', 'Investment Services', 'Customer Support', 'Performance Optimization'],
-      status: 'Production - Current',
+      tags: ['React Native', 'Banking', 'Interactive Games', 'Enterprise'],
+      description: 'Contributing to feature development for Ethiopia\'s premier private bank, including interactive gaming features and banking enhancements.',
+      features: ['Banking Features', 'Interactive Games', 'Dashen Edil Game', 'Enhanced Security', 'Customer Engagement', 'Performance Optimization'],
+      status: 'In Development - Current',
       type: 'banking',
-      detailedDescription: 'Working on major updates and new feature implementations for the Dashen Bank App at Eaglelion System Technology using React Native framework. Dashen Bank is one of Ethiopia\'s leading private banks, and I\'m responsible for enhancing the mobile banking experience through new features, improved security measures, and performance optimizations. The React Native app serves thousands of customers with comprehensive banking and financial services across iOS and Android platforms.',
-      technicalStack: ['React Native', 'TypeScript', 'Advanced Banking APIs', 'Security Frameworks', 'Biometric Authentication', 'Performance Optimization', 'Cross-platform Development'],
-      userBase: 'Thousands of customers',
+      detailedDescription: 'Contributing to feature development and enhancements for the Dashen Bank App at Eaglelion System Technology using React Native framework. As part of the development team, I work on adding new features to the existing banking app, including the innovative interactive game called "Dashen Edil" designed to increase customer engagement. While I didn\'t deploy the app myself, I\'ve been responsible for implementing specific features and improvements to enhance the user experience for one of Ethiopia\'s leading private banks.',
+      technicalStack: ['React Native', 'TypeScript', 'Banking APIs', 'Game Development', 'Interactive Features', 'Security Frameworks', 'Performance Optimization', 'Cross-platform Development'],
+      userBase: 'Thousands of banking customers',
       achievements: [
-        'Implemented advanced security features using React Native for banking applications',
-        'Optimized React Native app performance for large-scale user bases',
-        'Enhanced mobile banking experience with new React Native features',
-        'Delivered critical updates on schedule for cross-platform deployment'
+        'Developed interactive game feature "Dashen Edil" using React Native',
+        'Implemented new banking features and enhancements',
+        'Contributed to customer engagement through gamification',
+        'Enhanced app performance and user experience',
+        'Collaborated with team on feature development and testing'
       ]
     },
     {
