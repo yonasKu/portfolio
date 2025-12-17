@@ -1,0 +1,19 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist/port1",
+  "devCommand": "npm run start",
+  "installCommand": "npm install",
+  "framework": null,
+  "regions": ["pdx1"],
+  "build": {
+    "env": {
+      "NODE_VERSION": "24"
+    }
+  },
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
+}
