@@ -1,7 +1,7 @@
 <div class="container">
   <div class="section-heading text-center text-lg-start">
-    <h6>About Me</h6>
-    <h2>Professional Background</h2>
+    <h6>{{ displayAboutMe }}</h6>
+    <h2>{{ displayProfessionalBg }}</h2>
   </div>
   <div class="row gy-4">
     <div class="col-lg-5">
@@ -13,8 +13,8 @@
 
           <div class="avatar-border-outer"></div>
         </div>
-        <h3>Yonas Kumelachew</h3>
-        <p>Software Development Engineer</p>
+        <h3>{{ displayName }}</h3>
+        <p>{{ displayTitle }}</p>
         <div class="btn-bar">
           <a [href]="getDownloadLink()" download="CV.pdf" class="px-btn">
             Download CV <i class="fas fa-download"></i>

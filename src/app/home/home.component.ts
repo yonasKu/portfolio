@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 
 const MATRIX_CHARACTERS = [
   'ሀ',
@@ -321,12 +321,34 @@ type Matrix = Column[];
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
   @ViewChild('matrixCanvas', { static: true })
   matrixCanvasRef!: ElementRef<HTMLCanvasElement>;
+  @ViewChild('nameText', { static: false })
+  nameTextRef!: ElementRef<HTMLElement>;
+  @ViewChild('titleText', { static: false })
+  titleTextRef!: ElementRef<HTMLElement>;
+  
   matrix: Matrix | undefined;
   tickCount = 0;
   resizeObserver: ResizeObserver | undefined;
+  
+  // Text scramble properties - Initialize with random chars so text is visible
+  displayIntro = this.getRandomString(10);
+  displayFirstName = this.getRandomString(5);
+  displayLastName = this.getRandomString(10);
+  displayTitle = this.getRandomString(25);
+  displayLocation = this.getRandomString(17);
+  private readonly finalIntro = 'My name is';
+  private readonly finalFirstName = 'YONAS';
+  private readonly finalLastName = 'KUMELACHEW';
+  private readonly finalTitle = 'Computer Science Engineer';
+  private readonly finalLocation = 'based in Ethiopia';
+
+  private getRandomString(length: number): string {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?';
+    return Array.from({ length }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
+  }
 
   ngOnInit() {
     if (this.matrixCanvasRef.nativeElement) {
@@ -625,6 +647,85 @@ export class HomeComponent implements OnInit {
       requestAnimationFrame(animate);
     };
     requestAnimationFrame(animate);
+  }
+
+  ngAfterViewInit() {
+    // Start text scramble animation after view is initialized
+    setTimeout(() => {
+      this.scrambleText(this.finalIntro, 'intro', 35);
+      setTimeout(() => {
+        this.scrambleText(this.finalFirstName, 'firstName', 35);
+      }, 500);
+      setTimeout(() => {
+        this.scrambleText(this.finalLastName, 'lastName', 35);
+      }, 1000);
+      setTimeout(() => {
+        this.scrambleText(this.finalTitle, 'title', 25);
+      }, 1800);
+      setTimeout(() => {
+        this.scrambleText(this.finalLocation, 'location', 25);
+      }, 2600);
+    }, 300);
+  }
+
+  scrambleText(finalText: string, type: 'intro' | 'firstName' | 'lastName' | 'title' | 'location', speed: number) {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?';
+    const length = finalText.length;
+    let iteration = 0;
+    
+    const interval = setInterval(() => {
+      const scrambledText = finalText
+        .split('')
+        .map((char, index) => {
+          if (char === ' ') return ' ';
+          if (index < iteration) {
+            return finalText[index];
+          }
+          return chars[Math.floor(Math.random() * chars.length)];
+        })
+        .join('');
+      
+      switch(type) {
+        case 'intro':
+          this.displayIntro = scrambledText;
+          break;
+        case 'firstName':
+          this.displayFirstName = scrambledText;
+          break;
+        case 'lastName':
+          this.displayLastName = scrambledText;
+          break;
+        case 'title':
+          this.displayTitle = scrambledText;
+          break;
+        case 'location':
+          this.displayLocation = scrambledText;
+          break;
+      }
+      
+      iteration += 1 / 3;
+      
+      if (iteration >= length) {
+        clearInterval(interval);
+        switch(type) {
+          case 'intro':
+            this.displayIntro = finalText;
+            break;
+          case 'firstName':
+            this.displayFirstName = finalText;
+            break;
+          case 'lastName':
+            this.displayLastName = finalText;
+            break;
+          case 'title':
+            this.displayTitle = finalText;
+            break;
+          case 'location':
+            this.displayLocation = finalText;
+            break;
+        }
+      }
+    }, speed);
   }
 
   ngOnDestroy() {

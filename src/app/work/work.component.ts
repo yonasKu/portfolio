@@ -25,6 +25,19 @@ export interface Project {
 export class WorkComponent implements AfterViewInit, OnDestroy, OnInit {
   @ViewChild('projectsGrid') projectsGrid!: ElementRef;
 
+  // Text scramble properties
+  private intersectionObserver: IntersectionObserver | null = null;
+  private hasAnimated = false;
+  displayRecentWorks = this.getRandomString(12);
+  displayFeaturedProjects = this.getRandomString(17);
+  private readonly finalRecentWorks = 'Recent Works';
+  private readonly finalFeaturedProjects = 'Featured Projects';
+
+  private getRandomString(length: number): string {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?';
+    return Array.from({ length }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
+  }
+
   // --- Project Data ---
   projects: Project[] = [
     {
@@ -230,10 +243,77 @@ export class WorkComponent implements AfterViewInit, OnDestroy, OnInit {
   ngAfterViewInit(): void {
     this.updateSlideVisibility();
     this.setupDragListeners();
+    this.setupScrollObserver();
   }
 
   ngOnDestroy(): void {
     this.removeDragListeners();
+    if (this.intersectionObserver) {
+      this.intersectionObserver.disconnect();
+    }
+  }
+
+  private setupScrollObserver() {
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.2
+    };
+
+    this.intersectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !this.hasAnimated) {
+          this.hasAnimated = true;
+          setTimeout(() => {
+            this.scrambleText(this.finalRecentWorks, 'recentWorks', 30);
+            setTimeout(() => {
+              this.scrambleText(this.finalFeaturedProjects, 'featuredProjects', 25);
+            }, 300);
+          }, 100);
+        }
+      });
+    }, options);
+
+    const workSection = document.querySelector('app-work .container');
+    if (workSection) {
+      this.intersectionObserver.observe(workSection);
+    }
+  }
+
+  scrambleText(finalText: string, type: 'recentWorks' | 'featuredProjects', speed: number) {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?';
+    const length = finalText.length;
+    let iteration = 0;
+    
+    const interval = setInterval(() => {
+      const scrambledText = finalText
+        .split('')
+        .map((char, index) => {
+          if (char === ' ') return ' ';
+          if (index < iteration) {
+            return finalText[index];
+          }
+          return chars[Math.floor(Math.random() * chars.length)];
+        })
+        .join('');
+      
+      if (type === 'recentWorks') {
+        this.displayRecentWorks = scrambledText;
+      } else {
+        this.displayFeaturedProjects = scrambledText;
+      }
+      
+      iteration += 1 / 3;
+      
+      if (iteration >= length) {
+        clearInterval(interval);
+        if (type === 'recentWorks') {
+          this.displayRecentWorks = finalText;
+        } else {
+          this.displayFeaturedProjects = finalText;
+        }
+      }
+    }, speed);
   }
 
   private setupDragListeners(): void {
