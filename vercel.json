@@ -4,16 +4,15 @@
   "devCommand": "npm run start",
   "installCommand": "npm install",
   "framework": null,
-  "regions": ["pdx1"],
   "build": {
     "env": {
       "NODE_VERSION": "24"
     }
   },
-  "routes": [
+  "rewrites": [
     {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
