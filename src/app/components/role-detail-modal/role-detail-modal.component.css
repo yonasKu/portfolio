@@ -1,0 +1,393 @@
+/* Modal Styles - Similar to project modal */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.modal-content {
+  background: var(--bg-dark-1);
+  border-radius: 15px;
+  padding: 30px;
+  max-width: 800px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  border: 1px solid rgba(var(--px-white-rgb), 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.close-button {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 30px;
+  color: var(--px-white);
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+  z-index: 1001;
+}
+
+.close-button:hover {
+  opacity: 1;
+}
+
+/* Role Header */
+.role-header {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(var(--px-white-rgb), 0.1);
+}
+
+.company-logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(var(--px-white-rgb), 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.company-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.role-title-info h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--px-white);
+  margin-bottom: 8px;
+}
+
+.role-title-info h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--px-theme);
+  margin-bottom: 15px;
+}
+
+.role-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  font-size: 14px;
+}
+
+.role-meta span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--px-white);
+  opacity: 0.8;
+}
+
+.role-type {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.role-type.employment {
+  background: rgba(40, 167, 69, 0.1);
+  color: #28a745;
+}
+
+.role-type.freelance {
+  background: rgba(111, 66, 193, 0.1);
+  color: #6f42c1;
+}
+
+.app-type-banking {
+  background: rgba(0, 123, 255, 0.1);
+  color: #007bff;
+}
+
+.app-type-client {
+  background: rgba(111, 66, 193, 0.1);
+  color: #6f42c1;
+}
+
+.app-type-enterprise {
+  background: rgba(40, 167, 69, 0.1);
+  color: #28a745;
+}
+
+.status {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status.current {
+  background: rgba(40, 167, 69, 0.1);
+  color: #28a745;
+}
+
+.status.previous {
+  background: rgba(108, 117, 125, 0.1);
+  color: #6c757d;
+}
+
+/* Modal Sections */
+.modal-description {
+  margin-bottom: 30px;
+}
+
+.modal-description p {
+  color: var(--px-white);
+  opacity: 0.9;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+.modal-projects,
+.modal-achievements,
+.modal-tech-stack {
+  margin-bottom: 30px;
+}
+
+.modal-projects h4,
+.modal-achievements h4,
+.modal-tech-stack h4 {
+  color: var(--px-white);
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.modal-projects h4::before {
+  content: '';
+  width: 4px;
+  height: 20px;
+  background: var(--px-theme);
+  border-radius: 2px;
+}
+
+.modal-achievements h4::before {
+  content: '';
+  width: 4px;
+  height: 20px;
+  background: #28a745;
+  border-radius: 2px;
+}
+
+.modal-tech-stack h4::before {
+  content: '';
+  width: 4px;
+  height: 20px;
+  background: #6f42c1;
+  border-radius: 2px;
+}
+
+/* Projects List */
+.projects-list {
+  display: grid;
+  gap: 20px;
+}
+
+.project-item {
+  background: rgba(var(--px-white-rgb), 0.02);
+  padding: 20px;
+  border-radius: 12px;
+  border-left: 4px solid var(--px-theme);
+}
+
+.project-item h5 {
+  color: var(--px-white);
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.project-description {
+  color: var(--px-white);
+  opacity: 0.8;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.project-impact {
+  color: #28a745;
+  font-size: 14px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.project-impact i {
+  font-size: 12px;
+}
+
+.project-technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tech-tag {
+  background: var(--px-theme);
+  color: var(--px-white);
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+/* Achievements List */
+.modal-achievements ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.modal-achievements li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: var(--px-white);
+  opacity: 0.9;
+  line-height: 1.5;
+}
+
+.modal-achievements i {
+  color: #28a745;
+  font-size: 14px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Features Grid */
+.modal-features {
+  margin-bottom: 30px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 12px;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--px-white);
+  opacity: 0.9;
+  padding: 8px 0;
+}
+
+.feature-item i {
+  color: var(--px-theme);
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+/* Tech Stack Grid */
+.tech-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tech-badge {
+  background: #6f42c1;
+  color: var(--px-white);
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.tech-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(111, 66, 193, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .modal-backdrop {
+    padding: 10px;
+  }
+
+  .modal-content {
+    padding: 20px;
+    max-height: 95vh;
+  }
+
+  .role-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .company-logo {
+    align-self: center;
+  }
+
+  .role-meta {
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .role-title-info h2 {
+    font-size: 24px;
+  }
+
+  .role-title-info h3 {
+    font-size: 18px;
+  }
+
+  .close-button {
+    top: 10px;
+    right: 15px;
+    font-size: 25px;
+  }
+}
+
+/* Scrollbar Styling */
+.modal-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background: rgba(var(--px-white-rgb), 0.1);
+  border-radius: 3px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background: var(--px-theme);
+  border-radius: 3px;
+}
+
+.modal-content {
+  scrollbar-width: thin;
+  scrollbar-color: var(--px-theme) rgba(var(--px-white-rgb), 0.1);
+}

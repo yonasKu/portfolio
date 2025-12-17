@@ -19,14 +19,14 @@
   </div>
 
   <ul class="main-menu">
-    <li *ngFor="let item of ['home', 'about', 'services', 'work', 'contact']">
+    <li *ngFor="let item of ['home', 'about', 'services', 'professional-experience', 'work', 'contact']">
       <a 
         class="menu-item" 
         [class.active]="activeSection === item"
         [href]="'#' + item"
         (click)="setActiveSection(item)"
       >
-        {{ item | titlecase }}
+        {{ item === 'professional-experience' ? 'Experience' : (item | titlecase) }}
       </a>
     </li>
   </ul>

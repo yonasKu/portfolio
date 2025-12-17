@@ -1,0 +1,78 @@
+<div class="container">
+  <div class="section-heading text-center text-lg-start">
+    <h6>Professional Apps</h6>
+    <h2>Enterprise Mobile Applications</h2>
+    <div class="heading-description">
+      <p>Mobile applications I've built for banks, enterprises, and international clients</p>
+    </div>
+  </div>
+
+  <div class="projects-container">
+    <button class="nav-btn prev-btn" (click)="previousSlide()">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+
+    <div class="projects-grid" #rolesGrid>
+      <!-- Professional App Card Loop -->
+      <div class="project-card" *ngFor="let app of professionalApps">
+        <div class="project-image">
+          <img [src]="app.imageSrc" [alt]="app.title + ' App'" />
+          <div class="project-overlay">
+            <div class="project-links">
+              <span class="status-badge">{{ app.status }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-content">
+          <div class="project-tags">
+            <span [class]="'app-type-' + app.type">{{ app.type | titlecase }}</span>
+            <span *ngFor="let tag of app.tags.slice(0, 3)">{{ tag }}</span>
+          </div>
+          <h3>{{ app.title }}</h3>
+          <p><strong>{{ app.company }}</strong></p>
+          <p>{{ app.description }}</p>
+          <div class="project-features">
+            <ul>
+              <li *ngFor="let feature of app.features.slice(0, 3)">{{ feature }}</li>
+            </ul>
+          </div>
+        </div>
+        <button
+          class="details-button"
+          (click)="openModal(app); $event.stopPropagation()"
+        >
+          View Details
+        </button>
+      </div>
+      <!-- End Professional App Card Loop -->
+    </div>
+
+    <button class="nav-btn next-btn" (click)="nextSlide()">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+  </div>
+
+  <div class="navigation-dots">
+    <span
+      *ngFor="let dot of dots; let i = index"
+      [class.active]="currentSlide === i"
+      (click)="goToSlide(i)"
+    >
+    </span>
+  </div>
+
+  <div class="work-cta">
+    <h3>Ready to Build Your Next Mobile Solution?</h3>
+    <p>Let's discuss how I can help bring your mobile app vision to life with enterprise-grade quality and security.</p>
+    <a href="#contact" class="px-btn">
+      <i class="fas fa-handshake"></i> Let's Work Together
+    </a>
+  </div>
+
+  <!-- Professional App Detail Modal -->
+  <app-role-detail-modal
+    *ngIf="isModalVisible"
+    [app]="selectedApp"
+    (closeModalEvent)="closeModal()"
+  ></app-role-detail-modal>
+</div>
