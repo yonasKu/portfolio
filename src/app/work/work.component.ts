@@ -42,6 +42,61 @@ export class WorkComponent implements AfterViewInit, OnDestroy, OnInit {
   projects: Project[] = [
     {
       id: 1,
+      title: "World Cup 2026 Bracket Predictor",
+      imageSrc: "assets/img/Worldcup-Predictor/photo_2026-06-19_15-13-42.jpg",
+      tags: ["Telegram Mini App", "Next.js", "React Flow", "Supabase", "TypeScript"],
+      description: "A Telegram Mini App for predicting the 2026 FIFA World Cup bracket with an interactive canvas interface. Features real-time bracket generation, immutable locking, viral share cards, and comprehensive scoring system for the new 48-team format.",
+      features: [
+        "Interactive Bracket Canvas (React Flow)",
+        "12 Group Rankings & Third-Place Selection",
+        "Dynamic Round of 32 Generation",
+        "Winner Propagation System",
+        "Progressive Locking & Timestamps",
+        "PNG Share Cards for Telegram",
+        "Live Countdown to Deadlines",
+        "Leaderboard with Tie-breakers",
+        "Admin Broadcast Panel",
+        "PWA with Offline Support",
+        "RTL Support (Amharic)",
+        "Accessibility & Keyboard Navigation"
+      ],
+      githubLink: "https://github.com/yonasKu/World-cup-bracket-predict",
+      liveLink: "https://world-cup-bracket-predicter.vercel.app",
+      status: "Production - Live",
+      detailedDescription: "Bracketology is a comprehensive Telegram Mini App that lets users predict the 2026 FIFA World Cup bracket through an interactive canvas interface built with React Flow. Built for the new 48-team format, users rank teams in 12 groups (A–L), select the 8 best third-place teams, and the app auto-generates Round of 32 matchups based on the official FIFA inter-group pairing matrix.\n\nThe app features immutable prediction locking with SHA-256 hashing to prevent tampering, progressive locking that allows late joiners to predict future rounds, and styled PNG share cards that can be sent directly to Telegram. A sophisticated scoring engine with tie-breakers ranks all participants on a live leaderboard.\n\nBuilt with Next.js 16, React 19, Supabase for backend, and integrated with Telegram Bot API for seamless Mini App experience. The application is a PWA with offline support, full RTL layout support for Amharic, and complete keyboard navigation for accessibility.",
+      technicalStack: [
+        'Next.js 16 (App Router)',
+        'TypeScript 5',
+        'React 19',
+        'React Flow',
+        'Supabase (PostgreSQL)',
+        'Telegram Mini App SDK',
+        'Node Telegram Bot API',
+        'Tailwind CSS 4',
+        'shadcn/ui',
+        'Framer Motion 12',
+        'Zustand 5',
+        'Zod 4',
+        'next-intl (i18n)',
+        'Vitest (32 tests)',
+        '@dnd-kit',
+        '@use-gesture/react',
+        'html-to-image',
+        'canvas-confetti',
+        'Vercel'
+      ],
+      projectGoals: 'To create an engaging, tamper-proof prediction platform for the 2026 World Cup that makes complex bracket predictions simple through intuitive drag-and-drop interactions, while ensuring fairness through immutable locking and progressive deadlines that allow anyone to join at any stage of the tournament.',
+      screenshots: [
+        'assets/img/Worldcup-Predictor/photo_2026-06-19_15-13-42.jpg',
+        'assets/img/Worldcup-Predictor/photo_2026-06-19_15-13-47.jpg',
+        'assets/img/Worldcup-Predictor/photo_2026-06-19_15-13-51.jpg',
+        'assets/img/Worldcup-Predictor/photo_2026-06-19_15-13-54.jpg',
+        'assets/img/Worldcup-Predictor/photo_2026-06-19_15-13-57.jpg',
+        'assets/img/Worldcup-Predictor/photo_2026-06-19_15-14-01.jpg'
+      ]
+    },
+    {
+      id: 2,
       title: "Scam Alert",
       imageSrc: "assets/img/Scam alert image.png",
       tags: ["Next.js", "TypeScript", "Supabase"],
@@ -55,7 +110,7 @@ export class WorkComponent implements AfterViewInit, OnDestroy, OnInit {
       screenshots: ['/assets/images/projects/scam-alert-screenshot-1.png'] // Added screenshot path
     },
     {
-      id: 2,
+      id: 3,
       title: "USSD Code Manager",
       imageSrc: "assets/img/logo ussd.png",
       tags: ["React Native", "Mobile App", "Utility"],
@@ -72,7 +127,7 @@ export class WorkComponent implements AfterViewInit, OnDestroy, OnInit {
       ] 
     },
     {
-      id: 3,
+      id: 4,
       title: "Ethiopian Calendar Extension",
       imageSrc: "assets/img/calander-extension.png",
       tags: ["Chrome Extension", "JavaScript", "Calendar", "Amharic"],
@@ -85,7 +140,7 @@ export class WorkComponent implements AfterViewInit, OnDestroy, OnInit {
       screenshots: [] // TODO: Add screenshot URLs if available
     },
     {
-      id: 4,
+      id: 5,
       title: "UI Libertatem",
       imageSrc: "assets/img/ui-extension.png",
       tags: ["Chrome Extension", "JavaScript", "UI/UX"],
@@ -98,7 +153,7 @@ export class WorkComponent implements AfterViewInit, OnDestroy, OnInit {
       screenshots: [] // TODO: Add screenshot URLs if available
     },
     {
-      id: 5,
+      id: 6,
       title: "CNM Navigation App",
       imageSrc: "assets/placeholders/mobile-icon-with-bg.png",
       tags: ["Mobile App", "Navigation", "React Native"],
@@ -111,7 +166,7 @@ export class WorkComponent implements AfterViewInit, OnDestroy, OnInit {
       screenshots: [] // TODO: Add screenshot URLs if available
     },
     {
-      id: 6,
+      id: 7,
       title: "About Ethiopia",
       imageSrc: "assets/placeholders/mobile-icon-with-bg.png",
       tags: ["React Native", "Mobile App", "Educational"],
@@ -125,7 +180,7 @@ export class WorkComponent implements AfterViewInit, OnDestroy, OnInit {
       screenshots: [] // TODO: Add screenshot URLs if available
     },
     {
-      id: 7,
+      id: 8,
       title: "Felagi Bot",
       imageSrc: "assets/placeholders/bot-icon-with-bg.png",
       tags: ["Telegram Bot", "Python", "Location Services"],
@@ -139,7 +194,7 @@ export class WorkComponent implements AfterViewInit, OnDestroy, OnInit {
       screenshots: []
     },
     {
-      id: 8,
+      id: 9,
       title: "Menteko Bot",
       imageSrc: "assets/placeholders/bot-icon-with-bg.png",
       tags: ["Telegram Bot", "Python", "Moderation"],
@@ -153,7 +208,7 @@ export class WorkComponent implements AfterViewInit, OnDestroy, OnInit {
       screenshots: []
     },
     {
-      id: 9,
+      id: 10,
       title: "Portfolio Management AI",
       imageSrc: "assets/placeholders/ai-icon-with-bg.png",
       tags: ["Python", "Machine Learning", "Time Series", "Finance"],
