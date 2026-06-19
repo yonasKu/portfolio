@@ -37,12 +37,15 @@
               >
                 <i class="fas fa-external-link-alt"></i>
               </a>
-              <span
-                *ngIf="project.status"
-                class="status-badge"
+              <a
+                *ngIf="project.telegramBotLink"
+                [href]="project.telegramBotLink"
+                target="_blank"
+                title="Open Telegram Bot"
                 (click)="$event.stopPropagation()"
-                >{{ project.status }}</span
               >
+                <i class="fab fa-telegram"></i>
+              </a>
             </div>
           </div>
         </div>
