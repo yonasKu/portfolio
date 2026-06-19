@@ -3,13 +3,12 @@
     <div class="col-lg-7 col-xl-7 col-xxl-6">
       <div class="hb-text">
         <h1>
-          My name <br />
-          is <b>YONAS</b>
-          <span> <br />KUMELACHEW ... </span>
+          {{ displayIntro }}<br />
+          <b>{{ displayFirstName }}</b>
+          <span> <br />{{ displayLastName }} ... </span>
         </h1>
         <h2 class="lead">
-          <span>Computer Science Engineer</span> based in
-          <span>Ethiopia</span>
+          <span>{{ displayTitle }}</span> {{ displayLocation }}
         </h2>
 
         <div class="btn-bar">

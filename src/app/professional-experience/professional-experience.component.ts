@@ -32,11 +32,11 @@ export class ProfessionalExperienceComponent implements AfterViewInit, OnDestroy
       company: 'Eaglelion System Technology',
       imageSrc: 'assets/placeholders/banking-icon-with-bg.png',
       tags: ['React Native', 'Banking', 'Interactive Games', 'Enterprise'],
-      description: 'Contributing to feature development for Ethiopia\'s premier private bank, including interactive gaming features and banking enhancements.',
+      description: 'Contributing features to Ethiopia\'s premier private bank app, including the interactive "Dashen Edil" game and banking enhancements.',
       features: ['Banking Features', 'Interactive Games', 'Dashen Edil Game', 'Enhanced Security', 'Customer Engagement', 'Performance Optimization'],
       status: 'In Development - Current',
       type: 'banking',
-      detailedDescription: 'Contributing to feature development and enhancements for the Dashen Bank App at Eaglelion System Technology using React Native framework. As part of the development team, I work on adding new features to the existing banking app, including the innovative interactive game called "Dashen Edil" designed to increase customer engagement. While I didn\'t deploy the app myself, I\'ve been responsible for implementing specific features and improvements to enhance the user experience for one of Ethiopia\'s leading private banks.',
+      detailedDescription: 'Contributing features to the Dashen Bank App at Eaglelion System Technology using React Native framework. As part of the development team, I work on adding new features to the existing banking app, including the innovative interactive game called "Dashen Edil" designed to increase customer engagement. My role focuses on implementing specific features and improvements to enhance the user experience for one of Ethiopia\'s leading private banks.',
       technicalStack: ['React Native', 'TypeScript', 'Banking APIs', 'Game Development', 'Interactive Features', 'Security Frameworks', 'Performance Optimization', 'Cross-platform Development'],
       userBase: 'Thousands of banking customers',
       achievements: [
@@ -126,6 +126,19 @@ export class ProfessionalExperienceComponent implements AfterViewInit, OnDestroy
   selectedApp: ProfessionalApp | null = null;
   isModalVisible = false;
 
+  // --- Text Scramble Logic ---
+  private intersectionObserver: IntersectionObserver | null = null;
+  private hasAnimated = false;
+  displayHeader1 = this.getRandomString(16);
+  displayHeader2 = this.getRandomString(29);
+  private readonly finalHeader1 = 'Professional Apps';
+  private readonly finalHeader2 = 'Enterprise Mobile Applications';
+
+  private getRandomString(length: number): string {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?';
+    return Array.from({ length }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
+  }
+
   ngOnInit(): void {
     this.dots = Array(this.professionalApps.length).fill(0).map((x, i) => i);
   }
@@ -133,10 +146,77 @@ export class ProfessionalExperienceComponent implements AfterViewInit, OnDestroy
   ngAfterViewInit(): void {
     this.updateSlideVisibility();
     this.setupDragListeners();
+    this.setupScrollObserver();
   }
 
   ngOnDestroy(): void {
     this.removeDragListeners();
+    if (this.intersectionObserver) {
+      this.intersectionObserver.disconnect();
+    }
+  }
+
+  private setupScrollObserver() {
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.2
+    };
+
+    this.intersectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !this.hasAnimated) {
+          this.hasAnimated = true;
+          setTimeout(() => {
+            this.scrambleText(this.finalHeader1, 'header1', 30);
+            setTimeout(() => {
+              this.scrambleText(this.finalHeader2, 'header2', 25);
+            }, 300);
+          }, 100);
+        }
+      });
+    }, options);
+
+    const section = document.querySelector('app-professional-experience .container');
+    if (section) {
+      this.intersectionObserver.observe(section);
+    }
+  }
+
+  private scrambleText(finalText: string, type: 'header1' | 'header2', speed: number) {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?';
+    const length = finalText.length;
+    let iteration = 0;
+    
+    const interval = setInterval(() => {
+      const scrambledText = finalText
+        .split('')
+        .map((char, index) => {
+          if (char === ' ') return ' ';
+          if (index < iteration) {
+            return finalText[index];
+          }
+          return chars[Math.floor(Math.random() * chars.length)];
+        })
+        .join('');
+      
+      if (type === 'header1') {
+        this.displayHeader1 = scrambledText;
+      } else {
+        this.displayHeader2 = scrambledText;
+      }
+      
+      iteration += 1 / 3;
+      
+      if (iteration >= length) {
+        clearInterval(interval);
+        if (type === 'header1') {
+          this.displayHeader1 = finalText;
+        } else {
+          this.displayHeader2 = finalText;
+        }
+      }
+    }, speed);
   }
 
   private setupDragListeners(): void {

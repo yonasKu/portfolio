@@ -15,9 +15,96 @@ export class ContactComponent {
   submitSuccess: boolean = false;
   submitError: boolean = false;
 
+  // Text scramble properties
+  private intersectionObserver: IntersectionObserver | null = null;
+  private hasAnimated = false;
+  displayContactMe = this.getRandomString(10);
+  displayLetsConnect = this.getRandomString(13);
+  private readonly finalContactMe = 'Contact Me';
+  private readonly finalLetsConnect = 'Let\'s Connect';
+
+  private getRandomString(length: number): string {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?';
+    return Array.from({ length }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
+  }
+
   constructor() {
     // Initialize EmailJS with your public key
     emailjs.init("qddzyGLfvEYGVjsTh");
+  }
+
+  ngAfterViewInit() {
+    this.setupScrollObserver();
+  }
+
+  ngOnDestroy() {
+    if (this.intersectionObserver) {
+      this.intersectionObserver.disconnect();
+    }
+  }
+
+  private setupScrollObserver() {
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.2
+    };
+
+    this.intersectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !this.hasAnimated) {
+          this.hasAnimated = true;
+          setTimeout(() => {
+            this.scrambleText(this.finalContactMe, 'contactMe', 30);
+            setTimeout(() => {
+              this.scrambleText(this.finalLetsConnect, 'letsConnect', 25);
+            }, 300);
+          }, 100);
+        }
+      });
+    }, options);
+
+    const contactSection = document.querySelector('app-contact .container');
+    if (contactSection) {
+      this.intersectionObserver.observe(contactSection);
+    }
+  }
+
+  scrambleText(finalText: string, type: 'contactMe' | 'letsConnect', speed: number) {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?';
+    const length = finalText.length;
+    let iteration = 0;
+    
+    const interval = setInterval(() => {
+      const scrambledText = finalText
+        .split('')
+        .map((char, index) => {
+          if (char === ' ') return ' ';
+          if (char === '\'') return '\'';
+          if (index < iteration) {
+            return finalText[index];
+          }
+          return chars[Math.floor(Math.random() * chars.length)];
+        })
+        .join('');
+      
+      if (type === 'contactMe') {
+        this.displayContactMe = scrambledText;
+      } else {
+        this.displayLetsConnect = scrambledText;
+      }
+      
+      iteration += 1 / 3;
+      
+      if (iteration >= length) {
+        clearInterval(interval);
+        if (type === 'contactMe') {
+          this.displayContactMe = finalText;
+        } else {
+          this.displayLetsConnect = finalText;
+        }
+      }
+    }, speed);
   }
 
   async submit() {

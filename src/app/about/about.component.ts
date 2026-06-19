@@ -1,11 +1,11 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.css'],
 })
-export class AboutComponent implements OnInit, OnDestroy {
+export class AboutComponent implements OnInit, OnDestroy, AfterViewInit {
   private ethiopicChars: string[] = ['ዮ', 'ና', 'ስ', 'ቁ', 'ም', 'ላ', 'ቸ', 'ው'];
   private ctx: CanvasRenderingContext2D | null = null;
   private animationId: number | null = null;
@@ -25,6 +25,23 @@ export class AboutComponent implements OnInit, OnDestroy {
   private readonly COOLDOWN_BASE = 500; // Base cooldown in ms
   private colorCache: Map<number, string> = new Map();
   private devicePixelRatio: number = 1;
+  private intersectionObserver: IntersectionObserver | null = null;
+  private hasAnimated = false;
+
+  // Text scramble properties - Initialize with random chars so text is visible
+  displayAboutMe = this.getRandomString(8);
+  displayProfessionalBg = this.getRandomString(23);
+  displayName = this.getRandomString(17);
+  displayTitle = this.getRandomString(29);
+  private readonly finalAboutMe = 'About Me';
+  private readonly finalProfessionalBg = 'Professional Background';
+  private readonly finalName = 'Yonas Kumelachew';
+  private readonly finalTitle = 'Software Development Engineer';
+
+  private getRandomString(length: number): string {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?';
+    return Array.from({ length }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
+  }
 
   ngOnInit() {
     this.devicePixelRatio = window.devicePixelRatio || 1;
@@ -34,6 +51,46 @@ export class AboutComponent implements OnInit, OnDestroy {
     }, 100);
   }
 
+  ngAfterViewInit() {
+    // Set up intersection observer to trigger animation when section is visible
+    this.setupScrollObserver();
+  }
+
+  private setupScrollObserver() {
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.2 // Trigger when 20% of the section is visible
+    };
+
+    this.intersectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !this.hasAnimated) {
+          this.hasAnimated = true;
+          // Start text scramble animation when section becomes visible
+          setTimeout(() => {
+            this.scrambleText(this.finalAboutMe, 'aboutMe', 30);
+            setTimeout(() => {
+              this.scrambleText(this.finalProfessionalBg, 'professionalBg', 25);
+            }, 400);
+            setTimeout(() => {
+              this.scrambleText(this.finalName, 'name', 30);
+            }, 1200);
+            setTimeout(() => {
+              this.scrambleText(this.finalTitle, 'title', 30);
+            }, 1800);
+          }, 100);
+        }
+      });
+    }, options);
+
+    // Observe the about section container
+    const aboutSection = document.querySelector('app-about .container');
+    if (aboutSection) {
+      this.intersectionObserver.observe(aboutSection);
+    }
+  }
+
   ngOnDestroy() {
     if (this.animationId) {
       cancelAnimationFrame(this.animationId);
@@ -41,7 +98,64 @@ export class AboutComponent implements OnInit, OnDestroy {
     if (this.resizeObserver) {
       this.resizeObserver.disconnect();
     }
+    if (this.intersectionObserver) {
+      this.intersectionObserver.disconnect();
+    }
     this.colorCache.clear();
+  }
+
+  scrambleText(finalText: string, type: 'aboutMe' | 'professionalBg' | 'name' | 'title', speed: number) {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?';
+    const length = finalText.length;
+    let iteration = 0;
+    
+    const interval = setInterval(() => {
+      const scrambledText = finalText
+        .split('')
+        .map((char, index) => {
+          if (char === ' ') return ' ';
+          if (index < iteration) {
+            return finalText[index];
+          }
+          return chars[Math.floor(Math.random() * chars.length)];
+        })
+        .join('');
+      
+      switch(type) {
+        case 'aboutMe':
+          this.displayAboutMe = scrambledText;
+          break;
+        case 'professionalBg':
+          this.displayProfessionalBg = scrambledText;
+          break;
+        case 'name':
+          this.displayName = scrambledText;
+          break;
+        case 'title':
+          this.displayTitle = scrambledText;
+          break;
+      }
+      
+      iteration += 1 / 3;
+      
+      if (iteration >= length) {
+        clearInterval(interval);
+        switch(type) {
+          case 'aboutMe':
+            this.displayAboutMe = finalText;
+            break;
+          case 'professionalBg':
+            this.displayProfessionalBg = finalText;
+            break;
+          case 'name':
+            this.displayName = finalText;
+            break;
+          case 'title':
+            this.displayTitle = finalText;
+            break;
+        }
+      }
+    }, speed);
   }
 
   private setupResizeObserver() {
