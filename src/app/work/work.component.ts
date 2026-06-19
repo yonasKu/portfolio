@@ -10,6 +10,7 @@ export interface Project {
   features: string[];
   githubLink?: string;
   liveLink?: string;
+  telegramBotLink?: string; // Added for Telegram bots
   status?: string;
   detailedDescription: string; // Added for modal
   technicalStack?: string[]; // Added
@@ -44,11 +45,11 @@ export class WorkComponent implements AfterViewInit, OnDestroy, OnInit {
       id: 1,
       title: "World Cup 2026 Bracket Predictor",
       imageSrc: "assets/img/Worldcup-Predictor/photo_2026-06-19_15-13-42.jpg",
-      tags: ["Telegram Mini App", "Next.js", "React Flow", "Supabase", "TypeScript"],
-      description: "A Telegram Mini App for predicting the 2026 FIFA World Cup bracket with an interactive canvas interface. Features real-time bracket generation, immutable locking, viral share cards, and comprehensive scoring system for the new 48-team format.",
+      tags: ["Telegram Mini App", "Next.js", "React Flow", "Supabase"],
+      description: "A Telegram Mini App for predicting the 2026 FIFA World Cup bracket with interactive drag-and-drop interface built with React Flow. Features immutable locking, viral share cards, and live leaderboard.",
       features: [
-        "Interactive Bracket Canvas (React Flow)",
-        "12 Group Rankings & Third-Place Selection",
+        "Interactive Bracket Canvas",
+        "Group Rankings & Third-Place Selection",
         "Dynamic Round of 32 Generation",
         "Winner Propagation System",
         "Progressive Locking & Timestamps",
@@ -62,7 +63,7 @@ export class WorkComponent implements AfterViewInit, OnDestroy, OnInit {
       ],
       githubLink: "https://github.com/yonasKu/World-cup-bracket-predict",
       liveLink: "https://world-cup-bracket-predicter.vercel.app",
-      status: "Production - Live",
+      telegramBotLink: "https://t.me/wc2026_ethiopia_bot",
       detailedDescription: "Bracketology is a comprehensive Telegram Mini App that lets users predict the 2026 FIFA World Cup bracket through an interactive canvas interface built with React Flow. Built for the new 48-team format, users rank teams in 12 groups (A–L), select the 8 best third-place teams, and the app auto-generates Round of 32 matchups based on the official FIFA inter-group pairing matrix.\n\nThe app features immutable prediction locking with SHA-256 hashing to prevent tampering, progressive locking that allows late joiners to predict future rounds, and styled PNG share cards that can be sent directly to Telegram. A sophisticated scoring engine with tie-breakers ranks all participants on a live leaderboard.\n\nBuilt with Next.js 16, React 19, Supabase for backend, and integrated with Telegram Bot API for seamless Mini App experience. The application is a PWA with offline support, full RTL layout support for Amharic, and complete keyboard navigation for accessibility.",
       technicalStack: [
         'Next.js 16 (App Router)',
@@ -187,7 +188,7 @@ export class WorkComponent implements AfterViewInit, OnDestroy, OnInit {
       description: "An intelligent Telegram bot that helps users discover and navigate places in Addis Ababa.",
       features: ["Location Discovery", "Place Recommendations", "Interactive Navigation", "Real-time Updates"],
       githubLink: "https://github.com/yonasKu/Felagi_bot",
-      liveLink: "https://t.me/Felagi101_bot",
+      telegramBotLink: "https://t.me/Felagi101_bot",
       detailedDescription: "Felagi Bot is designed to help users discover places and navigate around Addis Ababa using Telegram. It provides recommendations and real-time updates for locations.",
       technicalStack: [],
       projectGoals: '',
@@ -201,7 +202,7 @@ export class WorkComponent implements AfterViewInit, OnDestroy, OnInit {
       description: "A powerful moderation bot for Telegram groups that helps admins maintain order and create a safe environment.",
       features: ["Automated Moderation", "Spam Protection", "Group Management", "Custom Rule Enforcement"],
       githubLink: "https://github.com/yonasKu/MentekoBotModeration-Bot-",
-      liveLink: "https://t.me/mentekobot",
+      telegramBotLink: "https://t.me/mentekobot",
       detailedDescription: "Menteko Bot assists Telegram group admins by providing robust moderation tools, spam protection, and group management features.",
       technicalStack: [],
       projectGoals: '',
