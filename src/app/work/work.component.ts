@@ -49,17 +49,10 @@ export class WorkComponent implements AfterViewInit, OnDestroy, OnInit {
       description: "A Telegram Mini App for predicting the 2026 FIFA World Cup bracket with interactive drag-and-drop interface built with React Flow. Features immutable locking, viral share cards, and live leaderboard.",
       features: [
         "Interactive Bracket Canvas",
-        "Group Rankings & Third-Place Selection",
-        "Dynamic Round of 32 Generation",
-        "Winner Propagation System",
         "Progressive Locking & Timestamps",
-        "PNG Share Cards for Telegram",
-        "Live Countdown to Deadlines",
-        "Leaderboard with Tie-breakers",
-        "Admin Broadcast Panel",
-        "PWA with Offline Support",
-        "RTL Support (Amharic)",
-        "Accessibility & Keyboard Navigation"
+        "Live Leaderboard & Scoring",
+        "Telegram Share Cards",
+        "PWA with Offline Support"
       ],
       githubLink: "https://github.com/yonasKu/World-cup-bracket-predict",
       liveLink: "https://world-cup-bracket-predicter.vercel.app",
