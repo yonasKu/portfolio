@@ -44,7 +44,7 @@ export class WorkComponent implements AfterViewInit, OnDestroy, OnInit {
     {
       id: 1,
       title: "World Cup 2026 Bracket Predictor",
-      imageSrc: "assets/img/Worldcup-Predictor/photo_2026-06-19_15-13-42.jpg",
+      imageSrc: "assets/img/Worldcup-Predictor/Predictor_main.jpg",
       tags: ["Telegram Mini App", "Next.js", "React Flow", "Supabase"],
       description: "A Telegram Mini App for predicting the 2026 FIFA World Cup bracket with interactive drag-and-drop interface built with React Flow. Features immutable locking, viral share cards, and live leaderboard.",
       features: [
